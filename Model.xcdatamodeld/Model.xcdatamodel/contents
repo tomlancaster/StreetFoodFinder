@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="City" representedClassName="City" syncable="YES">
+        <attribute name="city_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name_en_us" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="cities" inverseEntity="Region" syncable="YES"/>
+        <relationship name="spots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spot" inverseName="city" inverseEntity="Spot" syncable="YES"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="country_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name_en_us" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="regions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Region" inverseName="country" inverseEntity="Region" syncable="YES"/>
+    </entity>
+    <entity name="Region" representedClassName="Region" syncable="YES">
+        <attribute name="name_en_us" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="url_form" optional="YES" syncable="YES"/>
+        <relationship name="cities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="region" inverseEntity="City" syncable="YES"/>
+        <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="regions" inverseEntity="Country" syncable="YES"/>
+    </entity>
+    <entity name="Review" representedClassName="Review" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="featured" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lang" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="spot_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="reviews" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Spot" representedClassName="Spot" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city_id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lng" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spot_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="spotcategory_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="city" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="spots" inverseEntity="City" syncable="YES"/>
+        <relationship name="spot_category" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SpotCategory" inverseName="spots" inverseEntity="SpotCategory" syncable="YES"/>
+        <relationship name="spot_photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SpotPhoto" inverseName="spot" inverseEntity="SpotPhoto" syncable="YES"/>
+    </entity>
+    <entity name="SpotCategory" representedClassName="SpotCategory" syncable="YES">
+        <attribute name="description_en_us" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_en_us" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parent_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="spotcategory_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="spotcategory_photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SpotCategoryPhoto" inverseName="spotcategory" inverseEntity="SpotCategoryPhoto" syncable="YES"/>
+        <relationship name="spots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spot" inverseName="spot_category" inverseEntity="Spot" syncable="YES"/>
+    </entity>
+    <entity name="SpotCategoryPhoto" representedClassName="SpotCategoryPhoto" syncable="YES">
+        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="spotcategory_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="spotcategory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SpotCategory" inverseName="spotcategory_photos" inverseEntity="SpotCategory" syncable="YES"/>
+    </entity>
+    <entity name="SpotPhoto" representedClassName="SpotPhoto" syncable="YES">
+        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="spot_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="spot" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Spot" inverseName="spot_photos" inverseEntity="Spot" syncable="YES"/>
+    </entity>
+    <entity name="SpotTip" representedClassName="SpotTip" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="spot_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="spottips" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Review" inverseName="user" inverseEntity="Review" syncable="YES"/>
+        <relationship name="spottips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SpotTip" inverseName="user" inverseEntity="SpotTip" syncable="YES"/>
+        <relationship name="user_photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserPhoto" inverseName="user" inverseEntity="UserPhoto" syncable="YES"/>
+    </entity>
+    <entity name="UserPhoto" representedClassName="UserPhoto" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_photo_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="user_photos" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Spot" positionX="27" positionY="243" width="128" height="210"/>
+        <element name="User" positionX="-495" positionY="102" width="128" height="165"/>
+        <element name="SpotTip" positionX="196" positionY="150" width="128" height="120"/>
+        <element name="Review" positionX="153" positionY="-72" width="128" height="180"/>
+        <element name="SpotCategory" positionX="-333" positionY="-0" width="128" height="225"/>
+        <element name="City" positionX="-144" positionY="345" width="128" height="150"/>
+        <element name="Region" positionX="-299" positionY="342" width="128" height="165"/>
+        <element name="Country" positionX="-459" positionY="354" width="128" height="150"/>
+        <element name="SpotPhoto" positionX="277" positionY="369" width="128" height="90"/>
+        <element name="SpotCategoryPhoto" positionX="-0" positionY="-135" width="128" height="90"/>
+        <element name="UserPhoto" positionX="-261" positionY="-126" width="128" height="120"/>
+    </elements>
+</model>
