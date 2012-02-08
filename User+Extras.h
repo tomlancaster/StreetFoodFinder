@@ -7,7 +7,7 @@
 //
 
 #import "User.h"
-#import "SSASIRequest.h"
+
 #import "Product.h"
 @interface User (Extras)
 
@@ -22,16 +22,6 @@
                finishSelector:(SEL) success 
               failureSelector:(SEL) failure;
 
-
--(void) purchaseProduct:(Product *) theProduct 
-           withDelegate:(id) theDelegate 
-                  finishSelector:(SEL) success 
-                 failureSelector:(SEL) failure;
-
--(void) addStripeToken:(NSString *) theToken 
-           withDelegate:(id) theDelegate 
-         finishSelector:(SEL) success 
-        failureSelector:(SEL) failure;
 
 -(void) updateWithDict:(NSDictionary  *) dict;
 

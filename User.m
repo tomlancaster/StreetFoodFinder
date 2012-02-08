@@ -20,5 +20,6 @@
 @dynamic reviews;
 @dynamic spottips;
 @dynamic user_photos;
+@dynamic user_id;
 
 @end

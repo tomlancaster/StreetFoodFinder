@@ -36,30 +36,6 @@
 }
 
 
--(void) purchaseProduct:(Product *) theProduct 
-           withDelegate:(id) theDelegate 
-         finishSelector:(SEL) success 
-        failureSelector:(SEL) failure {
-    NSString *path = [NSString stringWithFormat:@"/products/purchase/%d.json", [theProduct.product_id intValue]];
-    if (self.stripe_token != nil) {
-        path = [path stringByAppendingFormat:@"?stripe_token=%@", self.stripe_token];
-    }
-    SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
-    [request doGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
-    
-}
-
--(void) addStripeToken:(NSString *) theToken 
-          withDelegate:(id) theDelegate 
-        finishSelector:(SEL) success 
-       failureSelector:(SEL) failure {
-    NSString *path = [NSString stringWithFormat:@"/users/add_stripe_token.json?stripe_token=%@", theToken];
-    
-    
-    SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
-    [request doPostWithGetPostDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
-}
-
 -(void) updateWithDict:(NSDictionary  *) dict {
     if ([dict valueForKey:@"last_4_digits"] != [NSNull null]) {
         self.last_4_digits = [NSString stringWithFormat:@"%i", [dict valueForKey:@"last_4_digits"]];

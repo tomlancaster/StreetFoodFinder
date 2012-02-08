@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSSet *reviews;
 @property (nonatomic, retain) NSSet *spottips;
 @property (nonatomic, retain) NSSet *user_photos;
+@property (nonatomic, retain) NSNumber *user_id;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
