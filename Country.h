@@ -14,7 +14,6 @@
 @interface Country : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * country_id;
-@property (nonatomic, retain) UNKNOWN_TYPE attribute;
 @property (nonatomic, retain) NSString * name_en_us;
 @property (nonatomic, retain) NSString * name_fr_fr;
 @property (nonatomic, retain) NSString * name_vi_vn;

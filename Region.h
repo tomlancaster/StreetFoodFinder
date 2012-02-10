@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * name_fr_fr;
 @property (nonatomic, retain) NSString * name_vi_vn;
 @property (nonatomic, retain) NSString * name_zh_tw;
-@property (nonatomic, retain) UNKNOWN_TYPE url_form;
+@property (nonatomic, retain) NSString * url_form;
 @property (nonatomic, retain) NSSet *cities;
 @property (nonatomic, retain) NSManagedObject *country;
 @end

@@ -7,9 +7,6 @@
 //
 
 #import "SSViewController.h"
-#import "Telco.h"
-#import "Telco+Extras.h"
-#import "User.h"
 #import "AppDelegate.h"
 #import "NSManagedObjectContext+Helpers.h"
 #import "NSManagedObjectContext+SimpleFetches.h"
@@ -18,16 +15,22 @@
 
 @synthesize HUD;
 @synthesize myTableView;
-@synthesize telcoImages;
+@synthesize fetchedResultsController;
+@synthesize sortDescriptors;
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         [self initHUD];
-        self.view.backgroundColor = COLOR_BEIGE;
-         self.telcoImages = [NSArray arrayWithObjects:@"viettel_50x50", @"mobifone_50x50", @"vinaphone_50x50", @"vietnamobile_50x50", @"beeline_50x50", @"sfone_50x50", @"evn_50x50", nil];
         self.myTableView.backgroundColor = [UIColor clearColor];
         self.myTableView.separatorColor = [UIColor lightGrayColor];
-       // self.myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        
+        /*
+         NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+         NSSortDescriptor *accountSort = [[NSSortDescriptor alloc] initWithKey:@"account" ascending:YES];
+         
+        self.sortDescriptors = [NSArray arrayWithObjects:nameSort, accountSort, nil];
+         */
+       
         
     }
     return self;
@@ -38,7 +41,8 @@
     [HUD hide:YES];
     SafeRelease(HUD);
     SafeRelease(myTableView);
-    SafeRelease(telcoImages);
+    SafeRelease(sortDescriptors);
+    SafeRelease(fetchedResultsController);
     [super dealloc];
 }
 
@@ -57,45 +61,122 @@
     [self.HUD removeFromSuperview];
     
 }
--(void) populateTelcoFromResponse:(NSString *) response  {
+/*
+ * generic method to get some results for the tableview
+ */
+
+- (void)findResults;
+{
+    if (fetchedResultsController == nil) {
+        NSFetchRequest *resultsFetchRequest = [[NSFetchRequest alloc] init];
+        [resultsFetchRequest setEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"Example"]];
+        
+        [resultsFetchRequest setSortDescriptors:self.sortDescriptors];
+        
+        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:resultsFetchRequest managedObjectContext:[NSManagedObjectContext defaultManagedObjectContext] sectionNameKeyPath:nil cacheName:@"Categories"];
+        fetchedResultsController.delegate = self;
+      
+        [resultsFetchRequest release];
+    }
     
-    [self doPopulateWithResponse:response];
-    //    self.HUD.labelText = NSLocalizedString(@"Synching Data", nil);
-    //  [self.HUD showWhileExecuting:@selector(doPopulateWithResponse:) onTarget:self withObject:response animated:YES];
-    
+    [fetchedResultsController performFetch:nil];
 }
 
--(void) doPopulateWithResponse:(NSString *) response {
-    User *theUser = GetGlobalUser();
-    [Telco populateFromResponse:response withUser:theUser]; 
-    NSError *error;
-    if (![[NSManagedObjectContext defaultManagedObjectContext] save:&error]) {
-		
-		DLog(@"error: %@", [error localizedDescription]);
-		
-		if (error != nil) {
-			// [error retain];
-			DLog(@"Failed to save merged %@: %@", @"viewcontroller", [error localizedDescription]);
-			NSArray* detailedErrors = [[error userInfo] objectForKey:NSDetailedErrorsKey];
-			if(detailedErrors != nil && [detailedErrors count] > 0) {
-				for(NSError* detailedError in detailedErrors) {
-					DLog(@"  DetailedError: %@", [detailedError userInfo]);
-				}
-			}
-			else {
-				DLog(@"  %@", [error userInfo]);
-				
-			}
-		}
-		//return nil;
-		
-	}    
-  
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = 
+    [[fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    /*
+    FailedBankInfo *info = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = info.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", 
+                                 info.city, info.state];
+     */
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = 
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] 
+                 initWithStyle:UITableViewCellStyleSubtitle 
+                 reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Set up the cell...
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.myTableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.myTableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.myTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.myTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.myTableView endUpdates];
+}
+
+
+/*
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath  {
     [cell.textLabel setFont:FONT_MAIN];
     [cell.detailTextLabel setFont:FONT_DETAIL];
 }
+ */
 @end

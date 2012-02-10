@@ -13,7 +13,6 @@
 @implementation Country
 
 @dynamic country_id;
-@dynamic attribute;
 @dynamic name_en_us;
 @dynamic name_fr_fr;
 @dynamic name_vi_vn;

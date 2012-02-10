@@ -15,4 +15,43 @@
     #import <CoreLocation/CoreLocation.h>
     #import "SSASIRequest.h"
     #import "JSONKit.h"
+#import <CoreData/CoreData.h>
 #endif
+
+
+#define STREETFOODCAT [NSNumber numberWithInt:340]
+
+#define SafeRelease(object) \
+if (object != nil) { \
+[object release]; \
+object = nil; \
+} else { \
+}
+
+
+#ifdef DEBUG
+#define Log(message) \
+NSLog(message @" (in %s at line %d)", \
+__PRETTY_FUNCTION__, __LINE__);
+#else
+#define Log(message)
+#endif
+
+#ifdef DEBUG
+#    define DLog(...) NSLog(__VA_ARGS__)
+#else
+#    define DLog(...) /* */
+#endif
+#define ALog(...) NSLog(__VA_ARGS__)
+
+
+#define IGNORE_NSNULL(__VALUE) (__VALUE == [NSNull null] ? nil : __VALUE)
+#define IGNORE_NULLSTRING(__VALUE) ([__VALUE isEqualToString:@"null"] ? nil : __VALUE) 
+
+#define UNDEF_TO_NULL(__VALUE) (__VALUE == nil ? [NSNull null] : __VALUE)
+#define NIL_TO_EMPTY(__VALUE) (__VALUE == nil ? @"" : __VALUE)
+
+#define API_SERVER @"http://tnhvietnam.grubby.net"
+
+#define FONT_DETAIL [UIFont fontWithName:@"Verdana" size:14]
+#define FONT_MAIN [UIFont fontWithName:@"Verdana Bold" size:18]

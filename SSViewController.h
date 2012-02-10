@@ -8,19 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-@interface SSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
+@interface SSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate, NSFetchedResultsControllerDelegate> {
     MBProgressHUD *HUD;
     IBOutlet UITableView *myTableView;
-    NSArray *telcoImages;
+    NSFetchedResultsController *fetchedResultsController;
+    NSArray *sortDescriptors; // for any sorting factors
 }
 
 @property (nonatomic, retain) MBProgressHUD *HUD;
 @property (nonatomic, retain) UITableView *myTableView;
-@property (nonatomic, retain) NSArray *telcoImages;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSArray *sortDescriptors;
+
+- (void)findResults;
+
 -(void) initHUD;
 
--(void) populateTelcoFromResponse:(NSString *) response ;
-
--(void) doPopulateWithResponse:(NSString *) response;
 
 @end

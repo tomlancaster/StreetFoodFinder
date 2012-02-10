@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="City" representedClassName="City" syncable="YES">
+    <entity name="City" representedClassName="CIty" syncable="YES">
         <attribute name="city_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name_en_us" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,12 +10,11 @@
         <relationship name="spots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spot" inverseName="city" inverseEntity="Spot" syncable="YES"/>
     </entity>
     <entity name="Country" representedClassName="Country" syncable="YES">
-        <attribute name="attribute" optional="YES" syncable="YES"/>
-        <attribute name="country_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name_en_us" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_fr_fr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="regions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Region" inverseName="country" inverseEntity="Region" syncable="YES"/>
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES">
@@ -24,7 +23,7 @@
         <attribute name="name_vi_vn" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="region_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="url_form" optional="YES" syncable="YES"/>
+        <attribute name="url_form" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="City" inverseName="region" inverseEntity="City" syncable="YES"/>
         <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="regions" inverseEntity="Country" syncable="YES"/>
     </entity>
@@ -103,7 +102,7 @@
     </entity>
     <elements>
         <element name="City" positionX="-144" positionY="345" width="128" height="150"/>
-        <element name="Country" positionX="-459" positionY="354" width="128" height="150"/>
+        <element name="Country" positionX="-459" positionY="354" width="128" height="135"/>
         <element name="Region" positionX="-299" positionY="342" width="128" height="165"/>
         <element name="Review" positionX="153" positionY="-72" width="128" height="180"/>
         <element name="Spot" positionX="27" positionY="243" width="128" height="210"/>

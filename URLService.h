@@ -16,4 +16,6 @@
 
 +(NSString *) getAPIServer;
 
++(NSString *)  getHTTPHeader;
+
 @end

@@ -24,8 +24,8 @@
 	if (self) {
 		path = newPath;
 		// set custom header
-		AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-		[self addRequestHeader:@"User-Agent" value:[appDelegate getHTTPHeader]];
+		
+		[self addRequestHeader:@"User-Agent" value:[URLService getHTTPHeader]];
 		//TODO: any other defaults
 	}
 	

@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "APIService.h"
-@class APIService;
+
 @class SSASIRequest;
 @class ASIHTTPRequest;
 
@@ -31,11 +30,6 @@
 
 
 -(id) initWithIdName:(NSString *) idName entityName:(NSString *) eName;
-
-
-
-
-
 
 -(void) populateWithDict:(NSDictionary *) dict;
 

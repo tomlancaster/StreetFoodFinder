@@ -8,19 +8,8 @@
 
 #import "User.h"
 
-#import "Product.h"
+
 @interface User (Extras)
-
-
-
--(void) registerUserWithDelegate:(id) theDelegate 
-                  finishSelector:(SEL) success 
-                 failureSelector:(SEL) failure;
-
--(void) loginUserWithDelegate:(UIViewController *) delegate 
-                     password:(NSString *) password 
-               finishSelector:(SEL) success 
-              failureSelector:(SEL) failure;
 
 
 -(void) updateWithDict:(NSDictionary  *) dict;

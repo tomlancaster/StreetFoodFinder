@@ -15,13 +15,12 @@
 
 +(NSString *) getAPIServer {
 	
-	NSString *server = [[NSUserDefaults standardUserDefaults] valueForKey:@"api_server"];
-	if (server != nil) {
-		return server;
-	} else {
-		return [NSString stringWithFormat:@"%@/api/v%d",API_SERVER, API_VERSION];
-	}
+	return API_SERVER;
 
+}
+
++(NSString *)  getHTTPHeader {
+    return @"pseudo user agent / 1.0";
 }
 
 @end

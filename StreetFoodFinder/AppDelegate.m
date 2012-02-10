@@ -9,25 +9,54 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
+#import "UIDevice-Hardware.h"
+#import "ASIHTTPRequest.h"
+#import "NSManagedObject+NSObject.h"
+#import "NSManagedObjectContext+Helpers.h"
+#import "NSManagedObjectContext+SimpleFetches.h"
+#import "SpotCategory+Extras.h"
+#import "SpotCategory.h"
+#import "ASIHTTPRequest.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize managedObjectModel;
+@synthesize defaultManagedObjectContext;
+@synthesize persistentStoreCoordinator;
+@synthesize navigationController;
+@synthesize loggedIn;
+@synthesize shouldNotLogOut;
+@synthesize globalUser;
+
 
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
+    [navigationController release];
+	[managedObjectModel release];
+	[defaultManagedObjectContext release];
+	[persistentStoreCoordinator release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+    // Show the app version in the Settings app
+	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+	[[NSUserDefaults standardUserDefaults] setObject:version forKey:@"version_preference"];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
+    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
+    
+    self.window.rootViewController = self.navigationController;
+
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -60,6 +89,7 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    [self getCategories];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -69,6 +99,28 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+
+
+
+- (void) getCategories {
+    // fetch all local cats
+    [SpotCategory getCategoriesWithDelegate:self finishSelector:@selector(didGetCategories:) failureSelector:@selector(requestFailed:)];
+     
+}
+
+-(void) didGetCategories:(ASIHTTPRequest *) request {
+    if ([request responseStatusCode] != 200) {
+        DLog(@"failed request");
+        return;
+    } else {
+        [SpotCategory syncFromResponse:[request responseString]];
+    }
+}
+
+-(void) requestFailed:(ASIHTTPRequest *)request {
+    DLog(@"Foo");
 }
 
 @end
