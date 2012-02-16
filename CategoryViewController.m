@@ -11,11 +11,14 @@
 #import "NSManagedObjectContext+SimpleFetches.h"
 #import "SpotCategory.h"
 #import "SpotCategory+Extras.h"
+#import "SpotListViewController.h"
 
 @implementation CategoryViewController
 
 @synthesize landscapeView;
 @synthesize portraitView;
+@synthesize searchButton;
+@synthesize nearbyButton;
 
 - (void)viewDidUnload
 {
@@ -27,6 +30,8 @@
 -(void) dealloc {
     SafeRelease(landscapeView);
     SafeRelease(portraitView);
+    SafeRelease(searchButton);
+    SafeRelease(nearbyButton);
     [super dealloc];
 }
 
@@ -54,7 +59,7 @@
 {
     if (fetchedResultsController == nil) {
         NSFetchRequest *resultsFetchRequest = [[NSFetchRequest alloc] init];
-        [resultsFetchRequest setEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"Example"]];
+        [resultsFetchRequest setEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"]];
         
         [resultsFetchRequest setSortDescriptors:self.sortDescriptors];
         
@@ -76,6 +81,15 @@
      
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SpotCategory *cat = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
+    controller.spotCategory = cat;
+    [self.navigationController pushViewController:controller animated:YES];
+    
+}
+
 #pragma -
 #pragma AFOpenFlowViewDataSource
 /*
@@ -94,6 +108,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"Dishes", @"category list");
+    self.navigationItem.rightBarButtonItem = self.searchButton;
+    self.navigationItem.leftBarButtonItem = self.nearbyButton;
     [self findResults];
 }
 
@@ -105,4 +122,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark -
+#pragma mark Event Handling
+
+-(IBAction)openSearchView:(id)sender {
+    
+}
+
+-(IBAction)openNearbyView:(id)sender {
+    
+}
 @end

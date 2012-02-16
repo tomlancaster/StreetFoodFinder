@@ -48,8 +48,12 @@
 	NSMutableDictionary *requestParams = [NSMutableDictionary dictionary];
 	[requestParams addEntriesFromDictionary:dict];
 	NSString *queryString = [requestParams urlEncodedString];
-	
-	NSString *urlString = [NSString stringWithFormat:@"%@%@?%@", [URLService getAPIServer], path, queryString];
+    NSString *urlString;
+	if (queryString != nil) {
+        urlString = [NSString stringWithFormat:@"%@%@?%@", [URLService getAPIServer], path, queryString];
+    } else {
+        urlString = [NSString stringWithFormat:@"%@%@", [URLService getAPIServer], path];
+    }
 	[self setURL:[NSURL URLWithString:urlString]];
 	[self setDidFinishSelector:success];
 	[self setDidFailSelector:failure];

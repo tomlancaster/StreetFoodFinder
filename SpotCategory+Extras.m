@@ -11,6 +11,7 @@
 #import "NSManagedObjectContext+Helpers.h"
 #import "NSManagedObjectContext+SimpleFetches.h"
 #import "ApplicationDataService.h"
+#import "Spot.h"
 
 @implementation SpotCategory (Extras)
 
@@ -21,6 +22,43 @@
     SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
     [request doGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
     
+    
+}
+
++(void) getSpotsWithDelegate:(id) theDelegate 
+              finishSelector:(SEL) success 
+             failureSelector:(SEL) failure {
+    NSString *path = [NSString stringWithFormat:@"/venuecategory/get_spots_json?venuecategory_id=%@", STREETFOODCAT];
+    SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
+    [request doGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
+}
+
++(void) syncSpotsFromResponse:(NSString *) response {
+    
+    ApplicationDataService *ADS = [[[ApplicationDataService alloc] initWithIdName:@"spot_id" entityName:@"Spot"] autorelease];
+    ApplicationDataService *catADS = [[[ApplicationDataService alloc] initWithIdName:@"spotcategory_id" entityName:@"SpotCategory"] autorelease];
+    ApplicationDataService *cityADS = [[[ApplicationDataService alloc] initWithIdName:@"city_id" entityName:@"City"] autorelease];
+    
+    NSDictionary *responseArray = [response objectFromJSONString];
+    for (NSDictionary *spotDict in responseArray) {
+        
+        Spot *spot = [ADS getLocalById:[spotDict objectForKey:@"id"]];
+        if (spot == nil) {
+            spot = [[NSManagedObjectContext defaultManagedObjectContext] insertNewObjectForEntityWithName:@"Spot"];
+        }
+        spot.spot_id = [NSNumber numberWithInt:[[spotDict objectForKey:@"id"] intValue]];
+        spot.homepage = IGNORE_NSNULL([spotDict objectForKey:@"homepage"]);
+        spot.name = IGNORE_NSNULL([spotDict objectForKey:@"name"]);
+        spot.lat = [NSNumber numberWithFloat:[IGNORE_NSNULL([spotDict objectForKey:@"lat"]) floatValue]];
+        spot.lng = [NSNumber numberWithFloat:[IGNORE_NSNULL([spotDict objectForKey:@"lng"]) floatValue]];
+        spot.spotcategory_id = [NSNumber numberWithInt:[IGNORE_NSNULL([spotDict objectForKey:@"spotcategory_id"]) intValue]];
+        spot.star_rating = [NSNumber numberWithFloat:[IGNORE_NSNULL([spotDict objectForKey:@"star_rating"]) floatValue]];
+        spot.num_reviews = IGNORE_NSNULL([spotDict objectForKey:@"num_reviews"]);
+        spot.city_id = [NSNumber numberWithInt:[IGNORE_NSNULL([spotDict objectForKey:@"city_id"]) intValue]];
+        spot.city = [cityADS getLocalById:spot.city_id];
+        spot.spot_category = [catADS getLocalById:spot.spotcategory_id];
+        DLog(@"spot category: %@", spot.spot_category);      
+    }
     
 }
 

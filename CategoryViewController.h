@@ -13,9 +13,17 @@
 @interface CategoryViewController : SSViewController  {
     UIView *landscapeView;
     IBOutlet UIView *portraitView;
+    IBOutlet UIBarButtonItem *searchButton;
+    IBOutlet UIBarButtonItem *nearbyButton;
 }
 
 @property (nonatomic, retain) UIView *landscapeView;
 @property (nonatomic, retain) UIView *portraitView;
+@property (nonatomic, retain) UIBarButtonItem *searchButton;
+@property (nonatomic, retain) UIBarButtonItem *nearbyButton;
+
+-(IBAction) openSearchView:(id)sender;
+
+-(IBAction)openNearbyView:(id)sender;
 
 @end

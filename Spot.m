@@ -2,25 +2,40 @@
 //  Spot.m
 //  StreetFoodFinder
 //
-//  Created by Tom Lancaster on 2/6/12.
+//  Created by Tom Lancaster on 2/16/12.
 //  Copyright (c) 2012 Sunshine Open Solutions. All rights reserved.
 //
 
 #import "Spot.h"
+#import "City.h"
+#import "SpotCategory.h"
+#import "SpotPhoto.h"
+#import "SSCLController.h"
+#import "Spot+Extras.h"
 
 
 @implementation Spot
 
-@dynamic name;
 @dynamic address;
+@dynamic city_id;
+@dynamic created_on;
 @dynamic lat;
 @dynamic lng;
-@dynamic spotcategory_id;
-@dynamic created_on;
+@dynamic name;
 @dynamic spot_id;
-@dynamic city_id;
+@dynamic spotcategory_id;
+@dynamic phone;
+@dynamic homepage;
+@dynamic star_rating;
+@dynamic num_reviews;
 @dynamic city;
-@dynamic spot_photos;
 @dynamic spot_category;
+@dynamic spot_photos;
+
+
+
+
+
+
 
 @end

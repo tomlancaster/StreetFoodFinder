@@ -15,9 +15,14 @@
                    finishSelector:(SEL) success 
                   failureSelector:(SEL) failure;
 
++(void) getSpotsWithDelegate:(id) theDelegate 
+              finishSelector:(SEL) success 
+             failureSelector:(SEL) failure;
 
 -(NSString *) getLocalizedName;
 
 +(void) syncFromResponse:(NSString *) response;
+
++(void) syncSpotsFromResponse:(NSString *) response;
 
 @end

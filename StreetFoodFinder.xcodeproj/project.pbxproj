@@ -41,7 +41,6 @@
 		E235B92114DFD232000AC94E /* SpotCategoryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92014DFD232000AC94E /* SpotCategoryPhoto.m */; };
 		E235B92414DFD233000AC94E /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92314DFD233000AC94E /* Region.m */; };
 		E235B92714DFD233000AC94E /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92614DFD233000AC94E /* Review.m */; };
-		E235B92A14DFD233000AC94E /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92914DFD233000AC94E /* Spot.m */; };
 		E235B92D14DFD233000AC94E /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92C14DFD233000AC94E /* City.m */; };
 		E235B93014DFD233000AC94E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92F14DFD233000AC94E /* User.m */; };
 		E235B93314DFD233000AC94E /* SpotTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93214DFD233000AC94E /* SpotTip.m */; };
@@ -77,6 +76,14 @@
 		E2D9C64814E51B63009FE891 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D9C64714E51B63009FE891 /* MobileCoreServices.framework */; };
 		E2D9C64A14E51B78009FE891 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D9C64914E51B78009FE891 /* SystemConfiguration.framework */; };
 		E2D9C64C14E51B7E009FE891 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D9C64B14E51B7E009FE891 /* libz.dylib */; };
+		E2D9C65014ECC790009FE891 /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C64E14ECC790009FE891 /* 74-location.png */; };
+		E2D9C65114ECC790009FE891 /* 74-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C64F14ECC790009FE891 /* 74-location@2x.png */; };
+		E2D9C65514ECC826009FE891 /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C65314ECC826009FE891 /* NearbyViewController.m */; };
+		E2D9C65614ECC826009FE891 /* NearbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C65414ECC826009FE891 /* NearbyViewController.xib */; };
+		E2D9C65914ECCA75009FE891 /* SSCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C65814ECCA75009FE891 /* SSCLController.m */; };
+		E2D9C65F14ECDB35009FE891 /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C65E14ECDB35009FE891 /* Spot.m */; };
+		E2D9C66414ECE41A009FE891 /* SpotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C66214ECE41A009FE891 /* SpotListViewController.m */; };
+		E2D9C66514ECE41A009FE891 /* SpotListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C66314ECE41A009FE891 /* SpotListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,8 +151,6 @@
 		E235B92314DFD233000AC94E /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
 		E235B92514DFD233000AC94E /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
 		E235B92614DFD233000AC94E /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
-		E235B92814DFD233000AC94E /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
-		E235B92914DFD233000AC94E /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
 		E235B92B14DFD233000AC94E /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		E235B92C14DFD233000AC94E /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		E235B92E14DFD233000AC94E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -212,6 +217,19 @@
 		E2D9C64714E51B63009FE891 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E2D9C64914E51B78009FE891 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E2D9C64B14E51B7E009FE891 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E2D9C64E14ECC790009FE891 /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "74-location.png"; path = "../../../Downloads/Glyphish Pro/icons/74-location.png"; sourceTree = "<group>"; };
+		E2D9C64F14ECC790009FE891 /* 74-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "74-location@2x.png"; path = "../../../Downloads/Glyphish Pro/icons/74-location@2x.png"; sourceTree = "<group>"; };
+		E2D9C65214ECC826009FE891 /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyViewController.h; sourceTree = "<group>"; };
+		E2D9C65314ECC826009FE891 /* NearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyViewController.m; sourceTree = "<group>"; };
+		E2D9C65414ECC826009FE891 /* NearbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyViewController.xib; sourceTree = "<group>"; };
+		E2D9C65714ECCA75009FE891 /* SSCLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCLController.h; sourceTree = "<group>"; };
+		E2D9C65814ECCA75009FE891 /* SSCLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCLController.m; sourceTree = "<group>"; };
+		E2D9C65D14ECDB35009FE891 /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
+		E2D9C65E14ECDB35009FE891 /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
+		E2D9C66014ECDE57009FE891 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		E2D9C66114ECE41A009FE891 /* SpotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotListViewController.h; sourceTree = "<group>"; };
+		E2D9C66214ECE41A009FE891 /* SpotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotListViewController.m; sourceTree = "<group>"; };
+		E2D9C66314ECE41A009FE891 /* SpotListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +257,7 @@
 		E235B89D14DFC4FA000AC94E = {
 			isa = PBXGroup;
 			children = (
+				E2D9C64D14ECC734009FE891 /* Images */,
 				E2D9C64B14E51B7E009FE891 /* libz.dylib */,
 				E2D9C64914E51B78009FE891 /* SystemConfiguration.framework */,
 				E2D9C64714E51B63009FE891 /* MobileCoreServices.framework */,
@@ -304,6 +323,9 @@
 		E235B8D214DFC650000AC94E /* Boilerplate */ = {
 			isa = PBXGroup;
 			children = (
+				E2D9C66014ECDE57009FE891 /* SynthesizeSingleton.h */,
+				E2D9C65714ECCA75009FE891 /* SSCLController.h */,
+				E2D9C65814ECCA75009FE891 /* SSCLController.m */,
 				E235B96814DFE83F000AC94E /* Haversine.h */,
 				E235B96714DFE83F000AC94E /* Haversine.m */,
 				E235B8D914DFC708000AC94E /* CustomButton.h */,
@@ -363,8 +385,8 @@
 				E235B8DB14DFC708000AC94E /* User+Extras.m */,
 				E235B92B14DFD233000AC94E /* City.h */,
 				E235B92C14DFD233000AC94E /* City.m */,
-				E235B92814DFD233000AC94E /* Spot.h */,
-				E235B92914DFD233000AC94E /* Spot.m */,
+				E2D9C65D14ECDB35009FE891 /* Spot.h */,
+				E2D9C65E14ECDB35009FE891 /* Spot.m */,
 				E235B95414DFDE57000AC94E /* Spot+Extras.h */,
 				E235B95514DFDE57000AC94E /* Spot+Extras.m */,
 				E235B92514DFD233000AC94E /* Review.h */,
@@ -450,8 +472,23 @@
 				E2D9C59714E4F3A7009FE891 /* CategoryViewController.h */,
 				E2D9C59814E4F3A7009FE891 /* CategoryViewController.m */,
 				E2D9C59914E4F3A7009FE891 /* CategoryViewController.xib */,
+				E2D9C65214ECC826009FE891 /* NearbyViewController.h */,
+				E2D9C65314ECC826009FE891 /* NearbyViewController.m */,
+				E2D9C65414ECC826009FE891 /* NearbyViewController.xib */,
+				E2D9C66114ECE41A009FE891 /* SpotListViewController.h */,
+				E2D9C66214ECE41A009FE891 /* SpotListViewController.m */,
+				E2D9C66314ECE41A009FE891 /* SpotListViewController.xib */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E2D9C64D14ECC734009FE891 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E2D9C64E14ECC790009FE891 /* 74-location.png */,
+				E2D9C64F14ECC790009FE891 /* 74-location@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,6 +545,10 @@
 				E235B8B714DFC4FA000AC94E /* InfoPlist.strings in Resources */,
 				E235B8C314DFC4FA000AC94E /* ViewController.xib in Resources */,
 				E2D9C59B14E4F3A7009FE891 /* CategoryViewController.xib in Resources */,
+				E2D9C65014ECC790009FE891 /* 74-location.png in Resources */,
+				E2D9C65114ECC790009FE891 /* 74-location@2x.png in Resources */,
+				E2D9C65614ECC826009FE891 /* NearbyViewController.xib in Resources */,
+				E2D9C66514ECE41A009FE891 /* SpotListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +587,6 @@
 				E235B92114DFD232000AC94E /* SpotCategoryPhoto.m in Sources */,
 				E235B92414DFD233000AC94E /* Region.m in Sources */,
 				E235B92714DFD233000AC94E /* Review.m in Sources */,
-				E235B92A14DFD233000AC94E /* Spot.m in Sources */,
 				E235B92D14DFD233000AC94E /* City.m in Sources */,
 				E235B93014DFD233000AC94E /* User.m in Sources */,
 				E235B93314DFD233000AC94E /* SpotTip.m in Sources */,
@@ -574,6 +614,10 @@
 				E2D9C59A14E4F3A7009FE891 /* CategoryViewController.m in Sources */,
 				E2D9C63D14E515BF009FE891 /* ApplicationDataService.m in Sources */,
 				E2D9C64014E51A51009FE891 /* Reachability.m in Sources */,
+				E2D9C65514ECC826009FE891 /* NearbyViewController.m in Sources */,
+				E2D9C65914ECCA75009FE891 /* SSCLController.m in Sources */,
+				E2D9C65F14ECDB35009FE891 /* Spot.m in Sources */,
+				E2D9C66414ECE41A009FE891 /* SpotListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

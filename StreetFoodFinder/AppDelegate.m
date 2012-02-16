@@ -17,6 +17,8 @@
 #import "SpotCategory+Extras.h"
 #import "SpotCategory.h"
 #import "ASIHTTPRequest.h"
+#import "CategoryViewController.h"
+#import "SSCLController.h"
 
 @implementation AppDelegate
 
@@ -51,12 +53,12 @@
 	[[NSUserDefaults standardUserDefaults] setObject:version forKey:@"version_preference"];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    self.viewController = [[[CategoryViewController alloc] initWithNibName:@"CategoryViewController" bundle:nil] autorelease];
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
     self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
     
     self.window.rootViewController = self.navigationController;
-
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -90,6 +92,7 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     [self getCategories];
+    [self getSpots];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -122,5 +125,21 @@
 -(void) requestFailed:(ASIHTTPRequest *)request {
     DLog(@"Foo");
 }
+
+- (void) getSpots {
+    // fetch all local cats
+    [SpotCategory getSpotsWithDelegate:self finishSelector:@selector(didGetSpots:) failureSelector:@selector(requestFailed:)];
+    
+}
+
+-(void) didGetSpots:(ASIHTTPRequest *) request {
+    if ([request responseStatusCode] != 200) {
+        DLog(@"failed request");
+        return;
+    } else {
+        [SpotCategory syncSpotsFromResponse:[request responseString]];
+    }
+}
+
 
 @end

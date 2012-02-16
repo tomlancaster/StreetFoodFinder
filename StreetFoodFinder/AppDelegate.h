@@ -10,6 +10,7 @@
 #import "ASIHTTPRequest.h"
 @class ViewController;
 @class User;
+@class CategoryViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, ASIHTTPRequestDelegate> {
     NSManagedObjectModel *managedObjectModel;
@@ -20,12 +21,13 @@
     BOOL loggedIn;
     User *globalUser;
     BOOL shouldNotLogOut;
+    CategoryViewController *viewController;
 
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (assign, getter = isLoggedIn) BOOL loggedIn;
-@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) CategoryViewController *viewController;
 @property (nonatomic, retain) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain) NSManagedObjectContext *defaultManagedObjectContext;
 @property (nonatomic, retain) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -44,5 +46,10 @@
 - (void) getCategories;
 
 -(void) didGetCategories:(ASIHTTPRequest *) request;
+
+
+- (void) getSpots;
+-(void) didGetSpots:(ASIHTTPRequest *) request;
+
 
 @end

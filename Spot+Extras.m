@@ -7,6 +7,7 @@
 //
 
 #import "Spot+Extras.h"
+#import "SSCLController.h"
 
 @implementation Spot (Extras)
 
@@ -28,6 +29,10 @@
     
 }
 
+-(float) getDistanceFromHere {
+    return [self distanceInMFromCoord:[[SSCLController sharedSSCLController] searchCenter]];
+}
+
 -(float)distanceInMFromCoord:(CLLocationCoordinate2D) coordinate {
 	if (!self.lat) {
 		return -1;
@@ -37,6 +42,21 @@
                                                        lat2:[self.lat floatValue] 
                                                        lon2:[self.lng floatValue]] autorelease];
 	return [haversine toMeters];
+}
+
+- (NSComparisonResult) sortByDistance:(Spot *)object2  {
+    if ([self getDistanceFromHere] > [object2 getDistanceFromHere]) {
+        return NSOrderedDescending;
+    } else {
+        return NSOrderedAscending;
+    }
+}
+-(NSComparisonResult) sortByRating:(Spot *) object2 {
+    return [[self star_rating] compare:[object2 star_rating]];
+}
+
+-(NSComparisonResult) sortByName:(Spot *) object2 {
+    return [[self name] compare:[object2 name]];
 }
 
 

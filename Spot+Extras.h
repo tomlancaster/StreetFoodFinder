@@ -20,9 +20,17 @@
                 finishSelector:(SEL) success 
             failureSelector:(SEL) failure;
 
+
+
+
 +(void) synchWithArrayOfDicts:(NSArray *) arrayOfDicts;
+
 
 -(float)distanceInMFromCoord:(CLLocationCoordinate2D) coordinate;
 
+-(float) getDistanceFromHere;
+- (NSComparisonResult) sortByDistance:(Spot *)object1;
+- (NSComparisonResult) sortByRating:(Spot *) object2;
+- (NSComparisonResult) sortByName:(Spot *) object2;
 
 @end
