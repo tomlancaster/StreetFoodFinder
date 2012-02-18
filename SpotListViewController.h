@@ -15,6 +15,7 @@
     IBOutlet UITableView *myTableView;
     NSArray *spots;
     SpotCategory *spotCategory;
+    NSInteger sortBy;
 }
 
 @property (nonatomic, retain) UIBarButtonItem *sortButton;
@@ -22,6 +23,7 @@
 @property (nonatomic, retain) UITableView *myTableView;
 @property (nonatomic, retain) SpotCategory *spotCategory;
 @property (nonatomic, retain) NSArray *spots;
+@property (nonatomic, assign) NSInteger sortBy;
 
 
 -(IBAction)sortButtonPressed:(id)sender;

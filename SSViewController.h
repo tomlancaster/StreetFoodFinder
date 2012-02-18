@@ -23,6 +23,6 @@
 - (void)findResults;
 
 -(void) initHUD;
-
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end

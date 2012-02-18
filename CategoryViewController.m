@@ -12,6 +12,9 @@
 #import "SpotCategory.h"
 #import "SpotCategory+Extras.h"
 #import "SpotListViewController.h"
+#import "ApplicationDataService.h"
+#import "CategoryTableViewCell.h"
+#import "CoverFlowViewController.h"
 
 @implementation CategoryViewController
 
@@ -72,22 +75,47 @@
     [fetchedResultsController performFetch:nil];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"CategoryTableViewCell";
+    CategoryTableViewCell *cell = (CategoryTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    
+    if (cell == nil) {
+        // Create a temporary UIViewController to instantiate the custom cell.
+        UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"CategoryTableViewCell" bundle:nil];
+        // Grab a pointer to the custom cell.
+        
+        cell = (CategoryTableViewCell *)temporaryController.view;
+        [temporaryController release];
+    }    
+    // Set up the cell...
+   
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+
+
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
      SpotCategory *info = [self.fetchedResultsController objectAtIndexPath:indexPath];
-     cell.textLabel.text = [info getLocalizedName];
-     //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", 
-     //inf, info.state];
+     [(CategoryTableViewCell *)cell catLabel].text = [info getLocalizedName];
+    [[(CategoryTableViewCell *)cell descriptionButton] addTarget:self action:@selector(descriptionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [[(CategoryTableViewCell *)cell spotsButton] addTarget:self action:@selector(spotsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+     
      
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SpotCategory *cat = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
-    controller.spotCategory = cat;
-    [self.navigationController pushViewController:controller animated:YES];
     
+    [self openSpotListPageWithCat:cat];
 }
 
 #pragma -
@@ -108,6 +136,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [myTableView setBackgroundView:nil];
+    [myTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
     self.title = NSLocalizedString(@"Dishes", @"category list");
     self.navigationItem.rightBarButtonItem = self.searchButton;
     self.navigationItem.leftBarButtonItem = self.nearbyButton;
@@ -119,8 +149,21 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    CoverFlowViewController *controller = [[[CoverFlowViewController alloc] initWithNibName:@"CoverFlowViewController" bundle:nil] autorelease];
+    
+    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
+        [self.navigationController pushViewController:controller animated:NO];
+    }
+    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+        [self.navigationController pushViewController:controller animated:NO];
+    }
+}
+
 
 #pragma mark -
 #pragma mark Event Handling
@@ -130,6 +173,33 @@
 }
 
 -(IBAction)openNearbyView:(id)sender {
+    SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
+    controller.sortBy = 1;
+    // get all spots
+    ApplicationDataService *ads = [[[ApplicationDataService alloc] initWithIdName:@"spot_id" entityName:@"Spot"] autorelease];
+    controller.spots = [ads getAllLocal];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+
+-(IBAction)descriptionButtonPressed:(id)sender {
+    NSIndexPath *indexPath = [self.myTableView indexPathForCell:(UITableViewCell *)[[sender superview]superview]];
+    SpotCategory *cat = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self openDescriptionOfCategory:cat];
+}
+-(IBAction)spotsButtonPressed:(id)sender {
+    NSIndexPath *indexPath = [self.myTableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    SpotCategory *cat = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self openSpotListPageWithCat:cat];
+}
+
+-(void) openDescriptionOfCategory:(SpotCategory *) cat {
     
+}
+
+-(void) openSpotListPageWithCat:(SpotCategory *) cat {
+    SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
+    controller.spotCategory = cat;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 @end

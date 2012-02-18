@@ -19,12 +19,14 @@
 @synthesize spotCategory;
 @synthesize myTableView;
 @synthesize spots;
+@synthesize sortBy;
 
 -(void) dealloc {
     SafeRelease(sortButton);
     SafeRelease(spotCategory);
     SafeRelease(spots);
     SafeRelease(myTableView);
+    sortBy = 0;
     [super dealloc];
 }
 
@@ -102,6 +104,10 @@
     if (self.spotCategory != nil) {
         self.spots = [self.spotCategory.spots allObjects];
     }
+    if (self.sortBy > 0) {
+        [self sortSpotsBy:self.sortBy];
+        [self.myTableView reloadData];
+    }
 }
 
 - (void)viewDidUnload
@@ -147,13 +153,11 @@
 
 -(void) sortSpotsBy:(NSInteger)code {
 	
-	if (code == 0) {
+	if (code == 0) { // distance
 		self.spots = [self.spots sortedArrayUsingSelector:@selector(sortByDistance:)];
-		
-		//Sort by Date
-	} else if (code == 1) {
+	} else if (code == 1) { // rating
 		self.spots = [self.spots sortedArrayUsingSelector:@selector(sortByRating:)];
-	} else if (code == 2) {
+	} else if (code == 2) { // name
 		self.spots = [self.spots sortedArrayUsingSelector:@selector(sortByName:)];
 	}
 }

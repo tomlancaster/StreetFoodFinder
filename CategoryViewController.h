@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 //#import "AFOpenFlowView.h"
 #import "SSViewController.h"
+@class SpotCategory;
 
 @interface CategoryViewController : SSViewController  {
     UIView *landscapeView;
     IBOutlet UIView *portraitView;
     IBOutlet UIBarButtonItem *searchButton;
     IBOutlet UIBarButtonItem *nearbyButton;
+
 }
 
 @property (nonatomic, retain) UIView *landscapeView;
@@ -26,4 +28,9 @@
 
 -(IBAction)openNearbyView:(id)sender;
 
+-(IBAction)descriptionButtonPressed:(id)sender;
+-(IBAction)spotsButtonPressed:(id)sender;
+
+-(void) openSpotListPageWithCat:(SpotCategory *) cat;
+-(void) openDescriptionOfCategory:(SpotCategory *) cat;
 @end

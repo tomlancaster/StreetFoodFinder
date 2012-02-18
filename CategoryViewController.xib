@@ -36,7 +36,7 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUITableView" id="33135008">
+					<object class="IBUITableView" id="992581896">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 460}</string>
@@ -46,7 +46,7 @@
 						<string key="NSReuseIdentifierKey">_NS:418</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
+							<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -54,7 +54,7 @@
 						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-						<float key="IBUIRowHeight">44</float>
+						<float key="IBUIRowHeight">60</float>
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
@@ -62,7 +62,7 @@
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="33135008"/>
+				<reference key="NSNextKeyView" ref="992581896"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -73,12 +73,12 @@
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUIBarButtonItem" id="1000543333">
+			<object class="IBUIBarButtonItem" id="718663705">
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUIStyle">1</int>
 				<int key="IBUISystemItemIdentifier">12</int>
 			</object>
-			<object class="IBUIBarButtonItem" id="11375942">
+			<object class="IBUIBarButtonItem" id="518324259">
 				<object class="NSCustomResource" key="IBUIImage">
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">74-location.png</string>
@@ -101,7 +101,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">myTableView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="33135008"/>
+						<reference key="destination" ref="992581896"/>
 					</object>
 					<int key="connectionID">7</int>
 				</object>
@@ -109,7 +109,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1000543333"/>
+						<reference key="destination" ref="718663705"/>
 					</object>
 					<int key="connectionID">9</int>
 				</object>
@@ -117,14 +117,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">nearbyButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="11375942"/>
+						<reference key="destination" ref="518324259"/>
 					</object>
 					<int key="connectionID">13</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
-						<reference key="source" ref="33135008"/>
+						<reference key="source" ref="992581896"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">5</int>
@@ -132,7 +132,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="33135008"/>
+						<reference key="source" ref="992581896"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">6</int>
@@ -140,7 +140,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">openSearchView:</string>
-						<reference key="source" ref="1000543333"/>
+						<reference key="source" ref="718663705"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">10</int>
@@ -148,7 +148,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">openNearbyView:</string>
-						<reference key="source" ref="11375942"/>
+						<reference key="source" ref="518324259"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">12</int>
@@ -166,7 +166,7 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="33135008"/>
+							<reference ref="992581896"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -183,17 +183,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="33135008"/>
+						<reference key="object" ref="992581896"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="1000543333"/>
+						<reference key="object" ref="718663705"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
-						<reference key="object" ref="11375942"/>
+						<reference key="object" ref="518324259"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -212,7 +212,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -220,16 +220,26 @@
 					<string key="className">CategoryViewController</string>
 					<string key="superclassName">SSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="descriptionButtonPressed:">id</string>
 						<string key="openNearbyView:">id</string>
 						<string key="openSearchView:">id</string>
+						<string key="spotsButtonPressed:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="descriptionButtonPressed:">
+							<string key="name">descriptionButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="openNearbyView:">
 							<string key="name">openNearbyView:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="openSearchView:">
 							<string key="name">openSearchView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="spotsButtonPressed:">
+							<string key="name">spotsButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
