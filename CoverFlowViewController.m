@@ -8,6 +8,12 @@
 
 #import "CoverFlowViewController.h"
 #import "AFOpenFlowView.h"
+#import "NSManagedObjectContext+Helpers.h"
+#import "NSManagedObjectContext+SimpleFetches.h"
+#import "SpotCategory.h"
+#import "SpotCategory+Extras.h"
+#import "SpotListViewController.h"
+#import "ApplicationDataService.h"
 
 @implementation CoverFlowViewController
 
@@ -37,12 +43,20 @@
 
     loadImagesOperationQueue = [[NSOperationQueue alloc] init];
     
+    // get categories
+    categories = [[NSManagedObjectContext defaultManagedObjectContext] fetchAllOfEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"] predicate:nil sortKey:@"name_en_us" ascending:YES error:nil];
+    
 	NSString *imageName;
-    NSArray *imagesArray = [NSArray arrayWithObjects:@"58",@"56",@"279",@"54", nil];
+   // NSArray *imagesArray = [NSArray arrayWithObjects:@"58",@"56",@"279",@"54", nil];
     int i = 0;
-	for (NSString *picNumber in imagesArray) {
-		imageName = [NSString stringWithFormat:@"%@.png", picNumber];
-		[(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:imageName] forIndex:i];
+    NSString *path = [[NSBundle mainBundle] resourcePath];
+	for (SpotCategory *cat in categories) {
+		imageName = [NSString stringWithFormat:@"%@.png", cat.spotcategory_id];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:imageName]]) {
+            [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:imageName] forIndex:i];
+        } else {
+            [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:@"279.png"] forIndex:i];
+        }
         i++;
 		NSLog(@"%d is the index",i);
         
@@ -56,7 +70,9 @@
 // delegate protocol to tell which image is selected
 - (void)openFlowView:(AFOpenFlowView *)openFlowView selectionDidChange:(int)index{
     
-	NSLog(@"%d is selected",index);
+	SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
+    controller.spotCategory = [categories objectAtIndex:index];
+    [self.navigationController pushViewController:controller animated:YES];
     
 }
 

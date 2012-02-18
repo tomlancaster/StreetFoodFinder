@@ -11,6 +11,7 @@
 
 @interface CoverFlowViewController : UIViewController {
     NSOperationQueue *loadImagesOperationQueue;
+    NSArray *categories;
 }
 
 @end
