@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSNumber * spot_id;
 @property (nonatomic, retain) id photo;
 @property (nonatomic, retain) Spot *spot;
+@property (nonatomic, retain) NSString *caption;
 
 @end

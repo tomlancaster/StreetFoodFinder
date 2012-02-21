@@ -92,7 +92,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SSCLController);
 }
 
 - (void)dealloc {
-    [self.locationManager release];
+    SafeRelease(locationManager);
     [super dealloc];
 }
 

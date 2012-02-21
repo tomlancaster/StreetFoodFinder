@@ -31,7 +31,7 @@
 	
 +(NSMutableDictionary *) getPhoneInformation {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-	CTTelephonyNetworkInfo *netInfo = [[CTTelephonyNetworkInfo alloc] init];
+	CTTelephonyNetworkInfo *netInfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
 	CTCarrier *carrier = [netInfo subscriberCellularProvider];
 	//if (NO) {
 	if (carrier != nil) {

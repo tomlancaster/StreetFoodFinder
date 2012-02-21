@@ -56,3 +56,4 @@ __PRETTY_FUNCTION__, __LINE__);
 #define FONT_DETAIL [UIFont fontWithName:@"Verdana" size:14]
 #define FONT_MAIN [UIFont fontWithName:@"Verdana Bold" size:18]
 #define MAX_RATING 5.0f
+#define FONT_SIZE 15.0f

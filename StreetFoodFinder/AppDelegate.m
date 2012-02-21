@@ -31,6 +31,8 @@
 @synthesize loggedIn;
 @synthesize shouldNotLogOut;
 @synthesize globalUser;
+@synthesize queue;
+@synthesize bgManagedObjectContext;
 
 
 - (void)dealloc
@@ -40,7 +42,9 @@
     [navigationController release];
 	[managedObjectModel release];
 	[defaultManagedObjectContext release];
+    [bgManagedObjectContext release];
 	[persistentStoreCoordinator release];
+    [queue release];
     [super dealloc];
 }
 
@@ -58,10 +62,34 @@
     self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
     
     self.window.rootViewController = self.navigationController;
+    if (![self queue]) {
+		[self setQueue:[[NSOperationQueue alloc] init]];
+        [self.queue setMaxConcurrentOperationCount:1];
+        [self.queue addObserver:self forKeyPath:@"operations" options:0 context:NULL];
+	}
+   
+    [self populateDatabase];
     
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object 
+                         change:(NSDictionary *)change context:(void *)context
+{
+    //DLog(@"KVP Change: %@", change);
+    if (object == self.queue && [keyPath isEqual:@"operations"]) {
+        if ([self.queue.operations count] == 0) {
+            // Do something here when your queue has completed
+            NSLog(@"queue has completed");			
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object 
+                               change:change context:context];
+    }
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -91,8 +119,8 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    [self getCategories];
-    [self getSpots];
+    
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -104,6 +132,11 @@
      */
 }
 
+// this is the first step in a chain of fetches: 
+// cats -> spots per cat -> reviews per spot
+-(void) populateDatabase {
+    [self getCategories];
+}
 
 
 
@@ -118,6 +151,7 @@
         DLog(@"failed request");
         return;
     } else {
+        DLog(@"got categories: %@", [request responseString]);
         [SpotCategory syncFromResponse:[request responseString]];
     }
 }
@@ -126,20 +160,6 @@
     DLog(@"Foo");
 }
 
-- (void) getSpots {
-    // fetch all local cats
-    [SpotCategory getSpotsWithDelegate:self finishSelector:@selector(didGetSpots:) failureSelector:@selector(requestFailed:)];
-    
-}
-
--(void) didGetSpots:(ASIHTTPRequest *) request {
-    if ([request responseStatusCode] != 200) {
-        DLog(@"failed request");
-        return;
-    } else {
-        [SpotCategory syncSpotsFromResponse:[request responseString]];
-    }
-}
 
 
 @end

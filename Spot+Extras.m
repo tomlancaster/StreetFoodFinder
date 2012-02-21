@@ -8,24 +8,94 @@
 
 #import "Spot+Extras.h"
 #import "SSCLController.h"
+#import "AppDelegate.h"
+#import "ASIHTTPRequest.h"
+#import "ApplicationDataService.h"
+#import "NSManagedObject+NSObject.h"
+#import "NSManagedObjectContext+Helpers.h"
+#import "NSManagedObjectContext+SimpleFetches.h"
+#import "Review.h"
+#import "Review+Extras.h"
 
 @implementation Spot (Extras)
 
--(void) getReviewsWithDelegate:(id) theDelegate 
++ (void) getReviewsForSpotId:(NSNumber *) spotId 
+                       delegate:(id) theDelegate 
                 finishSelector:(SEL) success 
                failureSelector:(SEL) failure {
-    
+    NSString *path = [NSString stringWithFormat:@"/en/venue/reviews?venue_id=%@&sort=0&json=1&app_version=%@&origin=iphone", spotId, @"3"];
+    SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
+    [request createGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.queue addOperation:request];
 }
-
 
 -(void) getTipsWithDelegate:(id) theDelegate 
              finishSelector:(SEL) success 
             failureSelector:(SEL) failure {
-    
+  
+
+}
+
++ (void) didGetReviews:(ASIHTTPRequest *) request {
+    if ([request responseStatusCode] != 200) {
+        DLog(@"failed request");
+        return;
+    } else {
+        [self syncReviewsFromResponse:[request responseString]];
+    }
+}
+
++ (void) requestFailed:(ASIHTTPRequest *)request {
+    DLog(@"Foo");
 }
 
 
-+(void) synchWithArrayOfDicts:(NSArray *) arrayOfDicts {
++ (void) syncReviewsFromResponse:(NSString *) response {
+    ApplicationDataService *ADS = [[[ApplicationDataService  alloc] initWithIdName:@"review_id" entityName:@"Review"] autorelease];
+    ApplicationDataService *spotADS = [[[ApplicationDataService alloc] initWithIdName:@"spot_id" entityName:@"Spot"] autorelease];
+    NSDictionary *responseArray = [response objectFromJSONString];
+    for (NSDictionary *reviewDict in responseArray) {
+        Review *review = [ADS getLocalById:[reviewDict objectForKey:@"web_id"]];
+        if (review == nil) {
+            review = [[NSManagedObjectContext defaultManagedObjectContext] insertNewObjectForEntityWithName:@"Review"];
+        }
+        [review safeSetValuesForKeysWithDictionary:reviewDict dateFormatter:nil];
+        
+        review.spot = [spotADS getLocalById:review.spot_id];
+        review.username = [reviewDict valueForKey:@"userName"];
+       
+        
+    }
+    
+    NSError *error = nil;
+	if (![[NSManagedObjectContext defaultManagedObjectContext] save:&error]) {
+		//DLog(@"unable to save local %@", [self class]);
+		DLog(@"error: %@", [error localizedDescription]);
+		
+		if (error != nil) {
+			// [error retain];
+			DLog(@"Failed to save merged  %@", [error localizedDescription]);
+			NSArray* detailedErrors = [[error userInfo] objectForKey:NSDetailedErrorsKey];
+			if(detailedErrors != nil && [detailedErrors count] > 0) {
+				for(NSError* detailedError in detailedErrors) {
+					DLog(@"  DetailedError: %@", [detailedError userInfo]);
+				}
+			}
+			else {
+				DLog(@"  %@", [error userInfo]);
+				
+			}
+		}
+		//return nil;
+		
+	}
+    
+    DLog(@"Got past reviews save");
+    
+}
+
+-(void) synchWithArrayOfDicts:(NSArray *) arrayOfDicts {
     
 }
 

@@ -48,8 +48,6 @@
 -(void)setSpotDistanceLabelText:(NSString *)_text;
 -(void)setSpotCategoriesLabelText:(NSString *)_text;
 
--(IBAction)linkButtonClick:(id)sender;
-
 
 
 -(void) initializeWithSpot:(Spot *) theSpot;

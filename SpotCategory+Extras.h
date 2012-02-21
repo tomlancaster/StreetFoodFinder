@@ -15,14 +15,19 @@
                    finishSelector:(SEL) success 
                   failureSelector:(SEL) failure;
 
-+(void) getSpotsWithDelegate:(id) theDelegate 
-              finishSelector:(SEL) success 
-             failureSelector:(SEL) failure;
++(void) getSpotsForCategoryId:(NSNumber *) catId 
+                 withDelegate:(id) theDelegate 
+               finishSelector:(SEL) success 
+              failureSelector:(SEL) failure;
 
 -(NSString *) getLocalizedName;
 
-+(void) syncFromResponse:(NSString *) response;
++ (void) syncFromResponse:(NSString *) response;
 
-+(void) syncSpotsFromResponse:(NSString *) response;
++ (void) syncSpotsFromResponse:(NSString *) response;
+
+
++ (void) didGetSpots:(ASIHTTPRequest *) request; 
++ (void) requestFailed:(ASIHTTPRequest *) request;
 
 @end

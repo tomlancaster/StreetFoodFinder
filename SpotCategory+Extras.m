@@ -12,6 +12,12 @@
 #import "NSManagedObjectContext+SimpleFetches.h"
 #import "ApplicationDataService.h"
 #import "Spot.h"
+#import "Spot+Extras.h"
+#import "AppDelegate.h"
+#import "Review+Extras.h"
+#import "Review.h"
+#import "ASIHTTPRequest.h"
+#import "SSASIRequest.h"
 
 @implementation SpotCategory (Extras)
 
@@ -20,20 +26,26 @@
                   failureSelector:(SEL) failure {
     NSString *path = [NSString stringWithFormat:@"/venuecategory/get_json?venuecategory_id=%@", STREETFOODCAT];
     SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
-    [request doGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
+    [request createGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.queue addOperation:request];
     
     
 }
 
-+(void) getSpotsWithDelegate:(id) theDelegate 
++(void) getSpotsForCategoryId:(NSNumber *) catId 
+                 withDelegate:(id) theDelegate 
               finishSelector:(SEL) success 
              failureSelector:(SEL) failure {
-    NSString *path = [NSString stringWithFormat:@"/venuecategory/get_spots_json?venuecategory_id=%@", STREETFOODCAT];
+    NSString *path = [NSString stringWithFormat:@"/venuecategory/get_spots_json?venuecategory_id=%@", catId];
+    DLog(@"path in get Spots: %@", path);
     SSASIRequest *request = [[[SSASIRequest alloc] initWithPath:path] autorelease];
-    [request doGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
+    [request createGetWithDict:nil andDelegate:theDelegate finishSelector:success failureSelector:failure];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.queue addOperation:request];
 }
 
-+(void) syncSpotsFromResponse:(NSString *) response {
++ (void) syncSpotsFromResponse:(NSString *) response {
     
     ApplicationDataService *ADS = [[[ApplicationDataService alloc] initWithIdName:@"spot_id" entityName:@"Spot"] autorelease];
     ApplicationDataService *catADS = [[[ApplicationDataService alloc] initWithIdName:@"spotcategory_id" entityName:@"SpotCategory"] autorelease];
@@ -47,6 +59,7 @@
             spot = [[NSManagedObjectContext defaultManagedObjectContext] insertNewObjectForEntityWithName:@"Spot"];
         }
         spot.spot_id = [NSNumber numberWithInt:[[spotDict objectForKey:@"id"] intValue]];
+        spot.address = IGNORE_NSNULL([spotDict objectForKey:@"address"]);
         spot.homepage = IGNORE_NSNULL([spotDict objectForKey:@"homepage"]);
         spot.name = IGNORE_NSNULL([spotDict objectForKey:@"name"]);
         spot.lat = [NSNumber numberWithFloat:[IGNORE_NSNULL([spotDict objectForKey:@"lat"]) floatValue]];
@@ -57,8 +70,34 @@
         spot.city_id = [NSNumber numberWithInt:[IGNORE_NSNULL([spotDict objectForKey:@"city_id"]) intValue]];
         spot.city = [cityADS getLocalById:spot.city_id];
         spot.spot_category = [catADS getLocalById:spot.spotcategory_id];
-        DLog(@"spot category: %@", spot.spot_category);      
+        [Spot getReviewsForSpotId:spot.spot_id delegate:[Spot class] finishSelector:@selector(didGetReviews:) failureSelector:@selector(requestFailed:)];
+       // DLog(@"spot category: %@", spot.spot_category);      
     }
+    
+    NSError *error = nil;
+	if (![[NSManagedObjectContext defaultManagedObjectContext] save:&error]) {
+		//DLog(@"unable to save local %@", [self class]);
+		DLog(@"error: %@", [error localizedDescription]);
+		
+		if (error != nil) {
+			// [error retain];
+			DLog(@"Failed to save merged  %@", [error localizedDescription]);
+			NSArray* detailedErrors = [[error userInfo] objectForKey:NSDetailedErrorsKey];
+			if(detailedErrors != nil && [detailedErrors count] > 0) {
+				for(NSError* detailedError in detailedErrors) {
+					DLog(@"  DetailedError: %@", [detailedError userInfo]);
+				}
+			}
+			else {
+				DLog(@"  %@", [error userInfo]);
+				
+			}
+		}
+		//return nil;
+		
+	} 
+     
+    DLog(@"Got past save");
     
 }
 
@@ -68,6 +107,7 @@
     
     
     NSDictionary *responseArray = [response objectFromJSONString];
+    DLog(@"size of cats array: %d", [responseArray count]);
     for (NSDictionary *catDict in responseArray) {
         
         SpotCategory *cat = [ADS getLocalById:[catDict objectForKey:@"id"]];
@@ -83,11 +123,25 @@
         cat.description_en_us = IGNORE_NSNULL([catDict objectForKey:@"description_en_us"]);
         cat.description_fr_fr = IGNORE_NSNULL([catDict objectForKey:@"description_fr_fr"]);
         cat.description_vi_vn = IGNORE_NSNULL([catDict objectForKey:@"description_vi_vn"]);
-        cat.description_zh_tw = IGNORE_NSNULL([catDict objectForKey:@"description_zh_tw"]);        
+        cat.description_zh_tw = IGNORE_NSNULL([catDict objectForKey:@"description_zh_tw"]);   
+        [SpotCategory getSpotsForCategoryId:cat.spotcategory_id withDelegate:self finishSelector:@selector(didGetSpots:) failureSelector:@selector(requestFailed:)];
     }
-    
 }
 
+
+
++ (void) didGetSpots:(ASIHTTPRequest *) request {
+    if ([request responseStatusCode] != 200) {
+        DLog(@"failed request");
+        return;
+    } else {
+        [self syncSpotsFromResponse:[request responseString]];
+    }
+}
+
++ (void) requestFailed:(ASIHTTPRequest *)request {
+    DLog(@"request failed: response code: %@", [request responseString] );
+}
 
 
 

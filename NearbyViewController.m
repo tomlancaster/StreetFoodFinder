@@ -21,6 +21,7 @@
         // Custom initialization
         NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"name_en_us" ascending:YES];
         self.sortDescriptors = [NSArray arrayWithObjects:nameSort, nil];
+        [nameSort release];
     }
     return self;
 }

@@ -13,6 +13,8 @@
 
 - (NSDictionary *)propertiesDictionary;
 
-
+- (void)safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues dateFormatter:(NSDateFormatter *)dateFormatter;
 
 @end
+
+

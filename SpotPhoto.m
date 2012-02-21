@@ -15,5 +15,5 @@
 @dynamic spot_id;
 @dynamic photo;
 @dynamic spot;
-
+@dynamic caption;
 @end

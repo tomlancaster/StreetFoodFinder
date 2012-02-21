@@ -42,6 +42,23 @@
 	
 }
 
++ (NSManagedObjectContext *)bgManagedObjectContext {
+	AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext *managedObjectContext = [delegate bgManagedObjectContext];
+    if (managedObjectContext != nil) {
+        return managedObjectContext;
+    }
+	
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [managedObjectContext setPersistentStoreCoordinator: coordinator];
+		[delegate setBgManagedObjectContext:managedObjectContext];
+    }
+    return managedObjectContext;
+	
+}
+
 + (NSManagedObjectModel *)managedObjectModel {
 	AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	NSManagedObjectModel *managedObjectModel = [delegate managedObjectModel];

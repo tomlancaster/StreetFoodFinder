@@ -19,6 +19,7 @@
 // thanks to Corey Floyd (http://stackoverflow.com/questions/1267520/where-to-place-the-core-data-stack-in-a-cocoa-cocoa-touch-application)
 // ( this keeps the app delegate clean)
 + (NSManagedObjectContext *)defaultManagedObjectContext;
++ (NSManagedObjectContext *) bgManagedObjectContext;
 + (NSManagedObjectModel *)managedObjectModel;
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 + (NSString *)applicationDocumentsDirectory;

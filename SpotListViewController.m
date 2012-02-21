@@ -13,6 +13,9 @@
 #import "Spot+Extras.h"
 #import "SpotCategory.h"
 #import "SpotCategory+Extras.h"
+#import "SpotDetailViewController.h"
+#import "SpotSearchTableViewCell.h"
+#import "NormalCellBackground.h"
 
 @implementation SpotListViewController
 @synthesize sortButton;
@@ -50,9 +53,9 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
-    Spot *info = [self.spots objectAtIndex:indexPath.row];
-    cell.textLabel.text = info.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Distance: %f", [info getDistanceFromHere]];
+    Spot *spot = [self.spots objectAtIndex:indexPath.row];
+    [(SpotSearchTableViewCell *) cell initializeWithSpot:spot];
+    cell.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-accessory-arrow"]] autorelease];
     
 }
 
@@ -71,14 +74,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = 
-    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"SpotSearchTableViewCell";
+    SpotSearchTableViewCell *cell = (SpotSearchTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] 
-                 initWithStyle:UITableViewCellStyleSubtitle 
-                 reuseIdentifier:CellIdentifier] autorelease];
+		// Create a temporary UIViewController to instantiate the custom cell.
+        UIViewController *temporaryController = [[[UIViewController alloc] initWithNibName:@"SpotSearchTableViewCell" bundle:nil] autorelease];
+		// Grab a pointer to the custom cell.
+        cell = (SpotSearchTableViewCell *)temporaryController.view;
+        
     }
     
     // Set up the cell...
@@ -88,6 +92,25 @@
 
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SpotDetailViewController *controller = [[[SpotDetailViewController alloc] initWithNibName:@"SpotDetails" bundle:nil] autorelease];
+    controller.selectedSpot = [self.spots objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath { 
+    
+    cell.backgroundView = [[[NormalCellBackground alloc] init] autorelease];
+    cell.selectedBackgroundView = [[[NormalCellBackground alloc] init] autorelease];
+
+    
+    CALayer *l = [cell.backgroundView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:5.0];  
+    [l setBorderWidth:1.0];
+    [l setBorderColor:[[UIColor darkGrayColor] CGColor]];
+    
+}
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
