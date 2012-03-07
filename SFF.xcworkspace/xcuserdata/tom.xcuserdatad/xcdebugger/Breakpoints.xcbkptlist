@@ -79,12 +79,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "351492959.21178"
+         timestampString = "352779102.687364"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "127"
          endingLineNumber = "127"
-         landmarkName = "+syncSpotsFromResponse:"
+         landmarkName = "+syncFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -99,20 +99,6 @@
          startingLineNumber = "40"
          endingLineNumber = "40"
          landmarkName = "+getSpotsForCategoryId:withDelegate:finishSelector:failureSelector:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SpotCategory+Extras.m"
-         timestampString = "351492959.21178"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138"
-         landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -183,6 +169,20 @@
          startingLineNumber = "71"
          endingLineNumber = "71"
          landmarkName = "+syncReviewsFromResponse:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SpotCategory+Extras.m"
+         timestampString = "352779632.606374"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
+         landmarkName = "+syncFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

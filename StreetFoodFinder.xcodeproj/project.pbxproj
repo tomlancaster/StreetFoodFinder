@@ -38,13 +38,10 @@
 		E235B91914DFC708000AC94E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B90014DFC708000AC94E /* MBProgressHUD.m */; };
 		E235B91A14DFC708000AC94E /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B90114DFC708000AC94E /* NSData+Base64.m */; };
 		E235B91D14DFC72D000AC94E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E235B91B14DFC72D000AC94E /* Model.xcdatamodeld */; };
-		E235B92114DFD232000AC94E /* SpotCategoryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92014DFD232000AC94E /* SpotCategoryPhoto.m */; };
 		E235B92414DFD233000AC94E /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92314DFD233000AC94E /* Region.m */; };
-		E235B92D14DFD233000AC94E /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92C14DFD233000AC94E /* City.m */; };
 		E235B93014DFD233000AC94E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92F14DFD233000AC94E /* User.m */; };
 		E235B93314DFD233000AC94E /* SpotTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93214DFD233000AC94E /* SpotTip.m */; };
 		E235B93614DFD234000AC94E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93514DFD234000AC94E /* Country.m */; };
-		E235B93914DFD234000AC94E /* SpotCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93814DFD234000AC94E /* SpotCategory.m */; };
 		E235B93C14DFD234000AC94E /* SpotPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93B14DFD234000AC94E /* SpotPhoto.m */; };
 		E235B93F14DFD234000AC94E /* UserPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93E14DFD234000AC94E /* UserPhoto.m */; };
 		E235B94814DFDA77000AC94E /* AFItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B94214DFDA77000AC94E /* AFItemView.m */; };
@@ -97,6 +94,9 @@
 		E299DC8F14F20B640023A890 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E299DC8D14F20B640023A890 /* CustomCellBackground.m */; };
 		E299DC9214F20C8C0023A890 /* DeviceDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E299DC9114F20C8B0023A890 /* DeviceDetection.m */; };
 		E2B3EAAF14F2161F007A689F /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B3EAAE14F2161F007A689F /* libMWPhotoBrowser.a */; };
+		E2B7A1421506F4F500771A0C /* UIImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A1411506F4F500771A0C /* UIImageToDataTransformer.m */; };
+		E2B7A1461506F6EA00771A0C /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A1451506F6EA00771A0C /* City.m */; };
+		E2B7A1491506F71500771A0C /* SpotCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A1481506F71500771A0C /* SpotCategory.m */; };
 		E2C8E59414F22E8700A58CB4 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C8E59314F22E8700A58CB4 /* Review.m */; };
 		E2C8E59814F2311F00A58CB4 /* XemziCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C8E59614F2311F00A58CB4 /* XemziCellBackground.m */; };
 		E2C8E59A14F2325900A58CB4 /* reviews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C8E59914F2325900A58CB4 /* reviews.xib */; };
@@ -194,20 +194,14 @@
 		E235B90114DFC708000AC94E /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		E235B90214DFC708000AC94E /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		E235B91C14DFC72D000AC94E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		E235B91F14DFD232000AC94E /* SpotCategoryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotCategoryPhoto.h; sourceTree = "<group>"; };
-		E235B92014DFD232000AC94E /* SpotCategoryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotCategoryPhoto.m; sourceTree = "<group>"; };
 		E235B92214DFD233000AC94E /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Region.h; sourceTree = "<group>"; };
 		E235B92314DFD233000AC94E /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
-		E235B92B14DFD233000AC94E /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
-		E235B92C14DFD233000AC94E /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		E235B92E14DFD233000AC94E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E235B92F14DFD233000AC94E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		E235B93114DFD233000AC94E /* SpotTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotTip.h; sourceTree = "<group>"; };
 		E235B93214DFD233000AC94E /* SpotTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotTip.m; sourceTree = "<group>"; };
 		E235B93414DFD234000AC94E /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		E235B93514DFD234000AC94E /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
-		E235B93714DFD234000AC94E /* SpotCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotCategory.h; sourceTree = "<group>"; };
-		E235B93814DFD234000AC94E /* SpotCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotCategory.m; sourceTree = "<group>"; };
 		E235B93A14DFD234000AC94E /* SpotPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotPhoto.h; sourceTree = "<group>"; };
 		E235B93B14DFD234000AC94E /* SpotPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotPhoto.m; sourceTree = "<group>"; };
 		E235B93D14DFD234000AC94E /* UserPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhoto.h; sourceTree = "<group>"; };
@@ -286,6 +280,12 @@
 		E299DC9014F20C8B0023A890 /* DeviceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDetection.h; sourceTree = "<group>"; };
 		E299DC9114F20C8B0023A890 /* DeviceDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceDetection.m; sourceTree = "<group>"; };
 		E2B3EAAE14F2161F007A689F /* libMWPhotoBrowser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMWPhotoBrowser.a; path = "../xcode_build_output/Release-iphoneos/libMWPhotoBrowser.a"; sourceTree = "<group>"; };
+		E2B7A1401506F4F500771A0C /* UIImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageToDataTransformer.h; sourceTree = "<group>"; };
+		E2B7A1411506F4F500771A0C /* UIImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageToDataTransformer.m; sourceTree = "<group>"; };
+		E2B7A1441506F6EA00771A0C /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		E2B7A1451506F6EA00771A0C /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		E2B7A1471506F71500771A0C /* SpotCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotCategory.h; sourceTree = "<group>"; };
+		E2B7A1481506F71500771A0C /* SpotCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotCategory.m; sourceTree = "<group>"; };
 		E2C8E59214F22E8700A58CB4 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
 		E2C8E59314F22E8700A58CB4 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		E2C8E59614F2311F00A58CB4 /* XemziCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XemziCellBackground.m; sourceTree = "<group>"; };
@@ -446,6 +446,8 @@
 		E235B8D214DFC650000AC94E /* Boilerplate */ = {
 			isa = PBXGroup;
 			children = (
+				E2B7A1401506F4F500771A0C /* UIImageToDataTransformer.h */,
+				E2B7A1411506F4F500771A0C /* UIImageToDataTransformer.m */,
 				E259726F14F21E1A006612FA /* Common.h */,
 				E259727014F21E1A006612FA /* Common.m */,
 				E2D9C66014ECDE57009FE891 /* SynthesizeSingleton.h */,
@@ -496,8 +498,8 @@
 				E235B93E14DFD234000AC94E /* UserPhoto.m */,
 				E235B93A14DFD234000AC94E /* SpotPhoto.h */,
 				E235B93B14DFD234000AC94E /* SpotPhoto.m */,
-				E235B93714DFD234000AC94E /* SpotCategory.h */,
-				E235B93814DFD234000AC94E /* SpotCategory.m */,
+				E2B7A1471506F71500771A0C /* SpotCategory.h */,
+				E2B7A1481506F71500771A0C /* SpotCategory.m */,
 				E235B94B14DFDB2C000AC94E /* SpotCategory+Extras.h */,
 				E235B94C14DFDB2C000AC94E /* SpotCategory+Extras.m */,
 				E235B93414DFD234000AC94E /* Country.h */,
@@ -508,8 +510,6 @@
 				E235B92F14DFD233000AC94E /* User.m */,
 				E235B8E114DFC708000AC94E /* User+Extras.h */,
 				E235B8DB14DFC708000AC94E /* User+Extras.m */,
-				E235B92B14DFD233000AC94E /* City.h */,
-				E235B92C14DFD233000AC94E /* City.m */,
 				E299DC5914F201480023A890 /* Spot.h */,
 				E299DC5A14F201490023A890 /* Spot.m */,
 				E235B95414DFDE57000AC94E /* Spot+Extras.h */,
@@ -518,8 +518,6 @@
 				E235B92314DFD233000AC94E /* Region.m */,
 				E235B94E14DFDD07000AC94E /* Region+Extras.h */,
 				E235B94F14DFDD07000AC94E /* Region+Extras.m */,
-				E235B91F14DFD232000AC94E /* SpotCategoryPhoto.h */,
-				E235B92014DFD232000AC94E /* SpotCategoryPhoto.m */,
 				E235B8E214DFC708000AC94E /* ApplicationDataService.h */,
 				E2D9C63C14E515BF009FE891 /* ApplicationDataService.m */,
 				E235B8E314DFC708000AC94E /* NSManagedObjectContext+Helpers.h */,
@@ -535,6 +533,8 @@
 				E299DC5414F1F7D80023A890 /* Review+Extras.m */,
 				E2C8E59214F22E8700A58CB4 /* Review.h */,
 				E2C8E59314F22E8700A58CB4 /* Review.m */,
+				E2B7A1441506F6EA00771A0C /* City.h */,
+				E2B7A1451506F6EA00771A0C /* City.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -814,13 +814,10 @@
 				E235B91914DFC708000AC94E /* MBProgressHUD.m in Sources */,
 				E235B91A14DFC708000AC94E /* NSData+Base64.m in Sources */,
 				E235B91D14DFC72D000AC94E /* Model.xcdatamodeld in Sources */,
-				E235B92114DFD232000AC94E /* SpotCategoryPhoto.m in Sources */,
 				E235B92414DFD233000AC94E /* Region.m in Sources */,
-				E235B92D14DFD233000AC94E /* City.m in Sources */,
 				E235B93014DFD233000AC94E /* User.m in Sources */,
 				E235B93314DFD233000AC94E /* SpotTip.m in Sources */,
 				E235B93614DFD234000AC94E /* Country.m in Sources */,
-				E235B93914DFD234000AC94E /* SpotCategory.m in Sources */,
 				E235B93C14DFD234000AC94E /* SpotPhoto.m in Sources */,
 				E235B93F14DFD234000AC94E /* UserPhoto.m in Sources */,
 				E235B94814DFDA77000AC94E /* AFItemView.m in Sources */,
@@ -866,6 +863,9 @@
 				E259727B14F21EF2006612FA /* DDAnnotationView.m in Sources */,
 				E2C8E59414F22E8700A58CB4 /* Review.m in Sources */,
 				E2C8E59814F2311F00A58CB4 /* XemziCellBackground.m in Sources */,
+				E2B7A1421506F4F500771A0C /* UIImageToDataTransformer.m in Sources */,
+				E2B7A1461506F6EA00771A0C /* City.m in Sources */,
+				E2B7A1491506F71500771A0C /* SpotCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,11 +46,18 @@
     // get categories
     categories = [[NSManagedObjectContext defaultManagedObjectContext] fetchAllOfEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"] predicate:nil sortKey:@"name_en_us" ascending:YES error:nil];
     
-	NSString *imageName;
+	//NSString *imageName;
    // NSArray *imagesArray = [NSArray arrayWithObjects:@"58",@"56",@"279",@"54", nil];
     int i = 0;
-    NSString *path = [[NSBundle mainBundle] resourcePath];
+   //NSString *path = [[NSBundle mainBundle] resourcePath];
 	for (SpotCategory *cat in categories) {
+        if (cat.spotcategory_photo != nil) {
+            [(AFOpenFlowView *)self.view setImage:cat.spotcategory_photo forIndex:i];
+        } else {
+            [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:@"279.png"] forIndex:i];
+        }
+        i++;
+        /*
 		imageName = [NSString stringWithFormat:@"%@.png", cat.spotcategory_id];
         if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:imageName]]) {
             [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:imageName] forIndex:i];
@@ -58,6 +65,7 @@
             [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:@"279.png"] forIndex:i];
         }
         i++;
+         */
 		NSLog(@"%d is the index",i);
         
 	}

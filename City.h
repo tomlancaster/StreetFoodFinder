@@ -2,7 +2,7 @@
 //  City.h
 //  StreetFoodFinder
 //
-//  Created by Tom Lancaster on 2/6/12.
+//  Created by Tom Lancaster on 3/7/12.
 //  Copyright (c) 2012 Sunshine Open Solutions. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @interface City : NSManagedObject
 
-@property (nonatomic, retain) NSString * name_fr_fr;
+@property (nonatomic, retain) NSNumber * city_id;
 @property (nonatomic, retain) NSString * name_en_us;
+@property (nonatomic, retain) NSString * name_fr_fr;
 @property (nonatomic, retain) NSString * name_vi_vn;
 @property (nonatomic, retain) NSString * name_zh_tw;
-@property (nonatomic, retain) NSNumber * city_id;
 @property (nonatomic, retain) Region *region;
 @property (nonatomic, retain) NSSet *spots;
 @end

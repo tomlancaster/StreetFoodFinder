@@ -70,13 +70,8 @@
         <attribute name="name_zh_tw" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parent_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="spotcategory_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="spotcategory_photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SpotCategoryPhoto" inverseName="spotcategory" inverseEntity="SpotCategoryPhoto" syncable="YES"/>
+        <attribute name="spotcategory_photo" optional="YES" attributeType="Transformable" valueTransformerName="UIImageToDataTransformer" syncable="YES"/>
         <relationship name="spots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spot" inverseName="spot_category" inverseEntity="Spot" syncable="YES"/>
-    </entity>
-    <entity name="SpotCategoryPhoto" representedClassName="SpotCategoryPhoto" syncable="YES">
-        <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="spotcategory_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="spotcategory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SpotCategory" inverseName="spotcategory_photos" inverseEntity="SpotCategory" syncable="YES"/>
     </entity>
     <entity name="SpotPhoto" representedClassName="SpotPhoto" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
@@ -115,8 +110,7 @@
         <element name="Region" positionX="-299" positionY="342" width="128" height="165"/>
         <element name="Review" positionX="153" positionY="-72" width="128" height="225"/>
         <element name="Spot" positionX="16" positionY="195" width="128" height="285"/>
-        <element name="SpotCategory" positionX="-333" positionY="-0" width="128" height="225"/>
-        <element name="SpotCategoryPhoto" positionX="-0" positionY="-135" width="128" height="90"/>
+        <element name="SpotCategory" positionX="-290" positionY="0" width="128" height="225"/>
         <element name="SpotPhoto" positionX="277" positionY="369" width="128" height="105"/>
         <element name="SpotTip" positionX="196" positionY="150" width="128" height="120"/>
         <element name="User" positionX="-495" positionY="102" width="128" height="180"/>

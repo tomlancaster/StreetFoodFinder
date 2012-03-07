@@ -124,6 +124,22 @@
         cat.description_fr_fr = IGNORE_NSNULL([catDict objectForKey:@"description_fr_fr"]);
         cat.description_vi_vn = IGNORE_NSNULL([catDict objectForKey:@"description_vi_vn"]);
         cat.description_zh_tw = IGNORE_NSNULL([catDict objectForKey:@"description_zh_tw"]);   
+        // get image
+        if (![[catDict objectForKey:@"imageurl"] isEqualToString:@""]) {
+            NSURL *url = [NSURL URLWithString:[catDict objectForKey:@"imageurl"]];
+            __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+            [request setCompletionBlock:^{
+                // Use when fetching binary data
+                NSData *responseData = [request responseData];
+                UIImage *image = [UIImage imageWithData:(NSData *)responseData];
+                cat.spotcategory_photo = image;
+            }];
+            [request setFailedBlock:^{
+                NSError *error = [request error];
+                DLog(@"error from image fetch: %@", error);
+            }];
+            [request startAsynchronous];
+        }
         [SpotCategory getSpotsForCategoryId:cat.spotcategory_id withDelegate:self finishSelector:@selector(didGetSpots:) failureSelector:@selector(requestFailed:)];
     }
 }
