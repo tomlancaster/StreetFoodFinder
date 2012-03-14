@@ -15,13 +15,15 @@
 #import "ApplicationDataService.h"
 #import "CategoryTableViewCell.h"
 #import "CoverFlowViewController.h"
+#import "CategoryDescriptionViewController.h"
+#import "NormalCellBackground.h"
+
 
 @implementation CategoryViewController
 
-@synthesize landscapeView;
-@synthesize portraitView;
-@synthesize searchButton;
 @synthesize nearbyButton;
+@synthesize myNavBar;
+@synthesize myNavItem;
 
 - (void)viewDidUnload
 {
@@ -31,10 +33,10 @@
 }
 
 -(void) dealloc {
-    SafeRelease(landscapeView);
-    SafeRelease(portraitView);
-    SafeRelease(searchButton);
+
     SafeRelease(nearbyButton);
+    SafeRelease(myNavBar);
+    SafeRelease(myNavItem);
     [super dealloc];
 }
 
@@ -98,6 +100,19 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath { 
+    
+    cell.backgroundView = [[[NormalCellBackground alloc] init] autorelease];
+    cell.selectedBackgroundView = [[[NormalCellBackground alloc] init] autorelease];
+    
+    
+    CALayer *l = [cell.backgroundView layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:5.0];  
+    [l setBorderWidth:1.0];
+    [l setBorderColor:[[UIColor darkGrayColor] CGColor]];
+    
+}
 
 
 
@@ -119,33 +134,25 @@
     [self openSpotListPageWithCat:cat];
 }
 
-#pragma -
-#pragma AFOpenFlowViewDataSource
-/*
-- (void)openFlowView:(AFOpenFlowView *)openFlowView requestImageForIndex:(int)index {
-    
-}
-
-- (UIImage *)defaultImage {
-    
-}
-*/
-
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [myTableView setBackgroundView:nil];
     [myTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
-    self.title = NSLocalizedString(@"Dishes", @"category list");
-    self.navigationItem.rightBarButtonItem = self.searchButton;
-    self.navigationItem.leftBarButtonItem = self.nearbyButton;
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.myNavItem.title = NSLocalizedString(@"Dishes", @"category list");
+    self.myNavBar.tintColor = [UIColor greenColor];
+    self.myNavItem.rightBarButtonItem = self.nearbyButton;
     [self findResults];
 }
 
-
+-(void) viewWillAppear:(BOOL)animated {
+    //[[self navigationController] setNavigationBarHidden:NO animated:NO];
+    [self.myNavBar setHidden:NO];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -155,13 +162,15 @@
 
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    CoverFlowViewController *controller = [[[CoverFlowViewController alloc] initWithNibName:@"CoverFlowViewController" bundle:nil] autorelease];
-    
+   
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+   
+
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
-        [self.navigationController pushViewController:controller animated:NO];
+         [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve] ;
     }
     if (toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
-        [self.navigationController pushViewController:controller animated:NO];
+         [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve];
     }
 }
 
@@ -169,17 +178,15 @@
 #pragma mark -
 #pragma mark Event Handling
 
--(IBAction)openSearchView:(id)sender {
-    
-}
-
 -(IBAction)openNearbyView:(id)sender {
     SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
     controller.sortBy = 1;
     // get all spots
     ApplicationDataService *ads = [[[ApplicationDataService alloc] initWithIdName:@"spot_id" entityName:@"Spot"] autorelease];
     controller.spots = [ads getAllLocal];
-    [self.navigationController pushViewController:controller animated:YES];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.transitionController transitionToViewController:navController withOptions:UIViewAnimationOptionTransitionCrossDissolve];
 }
 
 
@@ -195,12 +202,16 @@
 }
 
 -(void) openDescriptionOfCategory:(SpotCategory *) cat {
-    
+    CategoryDescriptionViewController *controller = [[[CategoryDescriptionViewController alloc] initWithNibName:@"CategoryDescriptionViewController" bundle:nil] autorelease];
+    controller.cat = cat;
+    [self presentModalViewController:controller animated:YES];
 }
 
 -(void) openSpotListPageWithCat:(SpotCategory *) cat {
     SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
     controller.spotCategory = cat;
-    [self.navigationController pushViewController:controller animated:YES];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.transitionController transitionToViewController:navController withOptions:UIViewAnimationOptionTransitionCrossDissolve];
 }
 @end

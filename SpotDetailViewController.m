@@ -52,7 +52,7 @@
 	
     [myTableView setBackgroundView:nil];
     [myTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
-   
+    
     
 
 }
@@ -61,12 +61,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
-    //self.navigationController.navigationBar.tintColor = TNH_RED;
-	self.navigationController.navigationBar.translucent = NO;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    //self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    
+	//self.navigationController.navigationBar.translucent = NO;
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
 	//[myTableView reloadData];
-     [SSCLController sharedSSCLController].delegate = self;
+    [SSCLController sharedSSCLController].delegate = self;
 	
 }
 
@@ -115,7 +117,7 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 6;
+    return 4;
 }
 
 
@@ -188,28 +190,7 @@
 			cell.textLabel.text = browseText;
 			
 			return cell;
-		} else if (indexPath.section == 2) {
-			// phone
-			static NSString *CellIdentifier = @"PhoneCell";
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			
-			if (cell == nil) {
-				
-				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-				
-			}
-			
-            cell.imageView.image = [UIImage imageNamed:@"icon-phone"];
-			if (![selectedSpot.phone isEqualToString:@"-1"]) {
-			
-				cell.textLabel.text = selectedSpot.phone;
-				cell.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-accessory-arrow"]] autorelease];
-			} else {
-				cell.textLabel.text = NSLocalizedString(@"Unknown", @"phone number not known");
-			}
-			
-			return cell;
-		} else if (indexPath.section == 3)  {
+		}  else if (indexPath.section == 2)  {
 			// address
 			static NSString *CellIdentifier = @"MapCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -228,7 +209,7 @@
 				
 				
 			return cell;
-        } else if (indexPath.section == 4) {
+        } else if (indexPath.section == 3) {
              // add photo
             static NSString *CellIdentifier = @"PhotosCell";
 			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -240,9 +221,18 @@
 			}
 			
             cell.imageView.image = [UIImage imageNamed:@"icon-photos"];
-			cell.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-accessory-arrow"]] autorelease];
-
-			cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%i photos",nil), [[self.selectedSpot.spot_photos allObjects] count]];
+            int numPhotos = [[self.selectedSpot.spot_photos allObjects] count];
+            if (numPhotos > 0) {
+                cell.accessoryView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-accessory-arrow"]] autorelease];
+            } else {
+                cell.accessoryView = nil;
+            }
+            
+            if (numPhotos == 1) {
+                cell.textLabel.text = NSLocalizedString(@"1 photo", nil);
+            } else {
+                cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%i photos",nil), numPhotos];
+            }
             return cell;
 
         } 
@@ -268,7 +258,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0) {
 		return 100;
-	} else if (indexPath.section == 4) {
+	} else if (indexPath.section == 2) {
 		return 100;
 	}
 	return 44;
@@ -285,31 +275,10 @@
 				[self viewReviews];
 			}
 			break;
-		
-		case 2: 
-		{
-			if (![self.selectedSpot.phone isEqualToString:@""]) {
-                UIDevice *device = [UIDevice currentDevice];
-                if ([[device model] isEqualToString:@"iPhone"] ) {
-                    
-                    
-                    NSString *phoneNum = [NSString stringWithFormat:@"tel://%@", self.selectedSpot.phone];
-                
-                   
-                    NSString *escaped = [phoneNum stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-                    [[UIApplication sharedApplication] openURL:[NSURL
-                                                                URLWithString:escaped]];
-                }
-				
-			}
-			
-		}
-            break;
-		case 3:
+		case 2:
 			[self viewOnMap];
 			break;
-        case 4:
+        case 3:
             [self viewPhotos];
             break;
        	}
@@ -347,20 +316,20 @@
     // Create array of `MWPhoto` objects
     self.photos = [NSMutableArray array];
     for (SpotPhoto *photo in [self.selectedSpot.spot_photos allObjects]) {
-        MWPhoto *mphoto = [MWPhoto photoWithImage:photo.photo];
+        MWPhoto *mphoto = [MWPhoto photoWithImage:photo.photo_large];
         mphoto.caption = photo.caption;
         [self.photos addObject:mphoto];
     }
-    [self.photos addObjectsFromArray:[self.selectedSpot.spot_photos allObjects]];
-    if ([self.photos count] == 0) {
+    if (self.photos.count == 0) {
         return;
     }
+    
     // Create & present browser
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     // Set options
-    browser.wantsFullScreenLayout = YES; // Decide if you want the photo browser full screen, i.e. whether the status bar is affected (defaults to YES)
-    browser.displayActionButton = NO; // Show action button to save, copy or email photos (defaults to NO)
-    [browser setInitialPageIndex:1]; // Example: allows second image to be presented first
+    browser.wantsFullScreenLayout = NO; // Decide if you want the photo browser full screen, i.e. whether the status bar is affected (defaults to YES)
+    browser.displayActionButton = YES; // Show action button to save, copy or email photos (defaults to NO)
+    [browser setInitialPageIndex:0]; // Example: allows second image to be presented first
     // Present
     [self.navigationController pushViewController:browser animated:YES];
     [browser release];

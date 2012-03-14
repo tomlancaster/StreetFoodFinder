@@ -24,10 +24,6 @@
 
 
 
-
-+(void) synchWithArrayOfDicts:(NSArray *) arrayOfDicts;
-
-
 -(float)distanceInMFromCoord:(CLLocationCoordinate2D) coordinate;
 
 -(float) getDistanceFromHere;

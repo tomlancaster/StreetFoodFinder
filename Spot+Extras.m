@@ -122,7 +122,11 @@
     }
 }
 -(NSComparisonResult) sortByRating:(Spot *) object2 {
-    return [[self star_rating] compare:[object2 star_rating]];
+    if ([[self star_rating] intValue] > [[object2 star_rating] intValue]) {
+        return NSOrderedAscending;
+    } else {
+        return NSOrderedDescending;
+    }
 }
 
 -(NSComparisonResult) sortByName:(Spot *) object2 {

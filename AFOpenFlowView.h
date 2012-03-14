@@ -73,9 +73,12 @@
 @protocol AFOpenFlowViewDelegate <NSObject>
 @optional
 - (void)openFlowView:(AFOpenFlowView *)openFlowView selectionDidChange:(int)index;
+@optional
+- (void)didSelectCoverIndex:(int)index;
 @end
 
 @protocol AFOpenFlowViewDataSource <NSObject>
 - (void)openFlowView:(AFOpenFlowView *)openFlowView requestImageForIndex:(int)index;
+@optional
 - (UIImage *)defaultImage;
 @end

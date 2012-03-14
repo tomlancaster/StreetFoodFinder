@@ -1,5 +1,5 @@
 //
-//  SpotPhoto.m
+//  SpotPhoto+Extras.h
 //  StreetFoodFinder
 //
 //  Created by Tom Lancaster on 3/14/12.
@@ -7,15 +7,7 @@
 //
 
 #import "SpotPhoto.h"
-#import "Spot.h"
 
-
-@implementation SpotPhoto
-
-@dynamic caption;
-@dynamic photo_small;
-@dynamic spot_id;
-@dynamic photo_large;
-@dynamic spot;
+@interface SpotPhoto (Extras)
 
 @end

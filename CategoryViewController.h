@@ -12,25 +12,25 @@
 @class SpotCategory;
 
 @interface CategoryViewController : SSViewController  {
-    UIView *landscapeView;
-    IBOutlet UIView *portraitView;
-    IBOutlet UIBarButtonItem *searchButton;
+
     IBOutlet UIBarButtonItem *nearbyButton;
+    IBOutlet UINavigationBar *myNavbar;
+    IBOutlet UINavigationItem *myNavItem;
 
 }
 
-@property (nonatomic, retain) UIView *landscapeView;
-@property (nonatomic, retain) UIView *portraitView;
-@property (nonatomic, retain) UIBarButtonItem *searchButton;
 @property (nonatomic, retain) UIBarButtonItem *nearbyButton;
+@property (nonatomic, retain) UINavigationBar *myNavBar;
+@property (nonatomic, retain) UINavigationItem *myNavItem;
 
--(IBAction) openSearchView:(id)sender;
 
 -(IBAction)openNearbyView:(id)sender;
 
 -(IBAction)descriptionButtonPressed:(id)sender;
 -(IBAction)spotsButtonPressed:(id)sender;
 
+
 -(void) openSpotListPageWithCat:(SpotCategory *) cat;
 -(void) openDescriptionOfCategory:(SpotCategory *) cat;
+
 @end

@@ -18,6 +18,7 @@
 #import "Review.h"
 #import "ASIHTTPRequest.h"
 #import "SSASIRequest.h"
+#import "SpotPhoto.h"
 
 @implementation SpotCategory (Extras)
 
@@ -70,6 +71,47 @@
         spot.city_id = [NSNumber numberWithInt:[IGNORE_NSNULL([spotDict objectForKey:@"city_id"]) intValue]];
         spot.city = [cityADS getLocalById:spot.city_id];
         spot.spot_category = [catADS getLocalById:spot.spotcategory_id];
+        NSArray *spotPhotos = [spotDict objectForKey:@"spotphotos"];
+        if ([spotPhotos count] > 0 ) {
+            for (NSDictionary *photoDict in spotPhotos) {
+                SpotPhoto *photo = [[NSManagedObjectContext defaultManagedObjectContext] insertNewObjectForEntityWithName:@"SpotPhoto"];
+                photo.caption = [photoDict objectForKey:@"caption"];
+                photo.spot = spot;
+                NSURL *url = [NSURL URLWithString:[photoDict objectForKey:@"small"]];
+                DLog(@"url: %@", url);
+                __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+                [request setCompletionBlock:^{
+                    // Use when fetching binary data
+                    NSData *responseData = [request responseData];
+                    UIImage *image = [UIImage imageWithData:(NSData *)responseData];
+                    
+                    photo.spot_id = spot.spot_id;
+                    photo.photo_small = image;
+                }];
+                [request setFailedBlock:^{
+                    NSError *error = [request error];
+                    DLog(@"error from spot image fetch: %@", error);
+                }];
+                [request startAsynchronous];
+                url = [NSURL URLWithString:[photoDict objectForKey:@"large"]];
+                DLog(@"url: %@", url);
+                __block ASIHTTPRequest *largeRequest = [ASIHTTPRequest requestWithURL:url];
+                [largeRequest setCompletionBlock:^{
+                    // Use when fetching binary data
+                    NSData *responseData = [largeRequest responseData];
+                    UIImage *image = [UIImage imageWithData:(NSData *)responseData];
+                    
+                    photo.spot_id = spot.spot_id;
+                    photo.photo_large = image;
+                }];
+                [request setFailedBlock:^{
+                    NSError *error = [request error];
+                    DLog(@"error from spot image fetch: %@", error);
+                }];
+                [largeRequest startAsynchronous];
+            }
+        }
+
         [Spot getReviewsForSpotId:spot.spot_id delegate:[Spot class] finishSelector:@selector(didGetReviews:) failureSelector:@selector(requestFailed:)];
        // DLog(@"spot category: %@", spot.spot_category);      
     }
@@ -180,5 +222,27 @@
 	// default is english
 	return self.name_en_us;
     
+}
+
+-(NSString *) getLocalizedDescription {
+    if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"vi"]) {
+        if (self.description_vi_vn != nil) {
+            return self.description_vi_vn;
+        }
+    } else if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"fr"]) {
+        if (self.description_fr_fr != nil) {
+            return self.description_fr_fr;
+        }
+    } else if ([[[NSLocale preferredLanguages] objectAtIndex:0] isEqualToString:@"zh"]) {
+        if (self.description_zh_tw != nil) {
+            return self.description_zh_tw;
+        }
+        
+    } 
+    
+    // default is english
+    return self.description_en_us;
+    
+
 }
 @end

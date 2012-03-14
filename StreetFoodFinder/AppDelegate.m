@@ -19,6 +19,8 @@
 #import "ASIHTTPRequest.h"
 #import "CategoryViewController.h"
 #import "SSCLController.h"
+#import "TransitionController.h"
+#import "CoverFlowViewController.h"
 
 @implementation AppDelegate
 
@@ -33,6 +35,9 @@
 @synthesize globalUser;
 @synthesize queue;
 @synthesize bgManagedObjectContext;
+@synthesize transitionController;
+@synthesize coverFlowViewController;
+@synthesize categoryViewController;
 
 
 - (void)dealloc
@@ -45,6 +50,9 @@
     [bgManagedObjectContext release];
 	[persistentStoreCoordinator release];
     [queue release];
+    [transitionController release];
+    [coverFlowViewController release];
+    [categoryViewController release];
     [super dealloc];
 }
 
@@ -57,18 +65,23 @@
 	[[NSUserDefaults standardUserDefaults] setObject:version forKey:@"version_preference"];
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    self.viewController = [[[CategoryViewController alloc] initWithNibName:@"CategoryViewController" bundle:nil] autorelease];
-    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
-    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
-    
-    self.window.rootViewController = self.navigationController;
+    self.categoryViewController = [[CategoryViewController alloc] initWithNibName:@"CategoryViewController"  bundle:nil];
+    self.coverFlowViewController = [[CoverFlowViewController alloc] initWithNibName:@"CoverFlowViewController" bundle:nil];
+    if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.transitionController = [[TransitionController alloc] initWithViewController:self.categoryViewController];
+    } else {
+        self.transitionController = [[TransitionController alloc] initWithViewController:self.categoryViewController];
+    }
+
+    self.window.rootViewController = self.transitionController;
+
     if (![self queue]) {
 		[self setQueue:[[NSOperationQueue alloc] init]];
         [self.queue setMaxConcurrentOperationCount:1];
         [self.queue addObserver:self forKeyPath:@"operations" options:0 context:NULL];
 	}
    
-    [self populateDatabase];
+ 
     
     [self.window makeKeyAndVisible];
     return YES;

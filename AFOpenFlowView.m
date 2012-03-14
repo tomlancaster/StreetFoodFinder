@@ -303,7 +303,15 @@ const static CGFloat kReflectionFraction = 0.85;
 		AFItemView *targetCover = [self findCoverOnscreen:targetLayer];
 		if (targetCover && (targetCover.number != selectedCoverView.number))
 			[self setSelectedCover:targetCover.number];
-	}
+        if (targetCover.number > 0){
+            
+            if ([self.viewDelegate respondsToSelector:@selector(didSelectCoverIndex:)])
+                [self.viewDelegate didSelectCoverIndex:targetCover.number];
+            
+        }
+        
+    }
+	
 	[self centerOnSelectedCover:YES];
 	
 	// And send the delegate the newly selected cover message.

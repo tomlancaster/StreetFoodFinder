@@ -2,7 +2,7 @@
 //  Spot.m
 //  StreetFoodFinder
 //
-//  Created by Tom Lancaster on 2/20/12.
+//  Created by Tom Lancaster on 3/14/12.
 //  Copyright (c) 2012 Sunshine Open Solutions. All rights reserved.
 //
 
@@ -27,9 +27,14 @@
 @dynamic spot_id;
 @dynamic spotcategory_id;
 @dynamic star_rating;
+@dynamic oh_morning;
+@dynamic oh_lunch;
+@dynamic oh_afternoon;
+@dynamic oh_evening;
+@dynamic oh_late;
 @dynamic city;
+@dynamic reviews;
 @dynamic spot_category;
 @dynamic spot_photos;
-@dynamic reviews;
 
 @end

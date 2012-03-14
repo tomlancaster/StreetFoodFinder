@@ -14,8 +14,16 @@
 #import "SpotCategory+Extras.h"
 #import "SpotListViewController.h"
 #import "ApplicationDataService.h"
+#import "CategoryDescriptionViewController.h"
+#import "CategoryViewController.h"
+
 
 @implementation CoverFlowViewController
+
+@synthesize categories;
+@synthesize selectedCat;
+@synthesize showSpotsButton;
+@synthesize showDescriptionButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +32,25 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    self.selectedCat = nil;
+    self.categories = nil;
+    self.showSpotsButton = nil;
+    self.showDescriptionButton = nil;
+}
+
+-(void) dealloc {
+    SafeRelease(categories);
+    SafeRelease(selectedCat);
+    SafeRelease(showSpotsButton);
+    SafeRelease(showDescriptionButton);
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,21 +62,18 @@
 }
 
 #pragma mark - View lifecycle
-
+#define kSelectedCat 3
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
 
-    loadImagesOperationQueue = [[NSOperationQueue alloc] init];
-    
     // get categories
-    categories = [[NSManagedObjectContext defaultManagedObjectContext] fetchAllOfEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"] predicate:nil sortKey:@"name_en_us" ascending:YES error:nil];
+    self.categories = [[NSManagedObjectContext defaultManagedObjectContext] fetchAllOfEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"] predicate:nil sortKey:@"name_en_us" ascending:YES error:nil];
     
-	//NSString *imageName;
-   // NSArray *imagesArray = [NSArray arrayWithObjects:@"58",@"56",@"279",@"54", nil];
+	
     int i = 0;
-   //NSString *path = [[NSBundle mainBundle] resourcePath];
+   
 	for (SpotCategory *cat in categories) {
         if (cat.spotcategory_photo != nil) {
             [(AFOpenFlowView *)self.view setImage:cat.spotcategory_photo forIndex:i];
@@ -57,19 +81,18 @@
             [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:@"279.png"] forIndex:i];
         }
         i++;
-        /*
-		imageName = [NSString stringWithFormat:@"%@.png", cat.spotcategory_id];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[path stringByAppendingPathComponent:imageName]]) {
-            [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:imageName] forIndex:i];
-        } else {
-            [(AFOpenFlowView *)self.view setImage:[UIImage imageNamed:@"279.png"] forIndex:i];
-        }
-        i++;
-         */
+        
 		NSLog(@"%d is the index",i);
         
 	}
 	[(AFOpenFlowView *)self.view setNumberOfImages:i+1];
+    [(AFOpenFlowView *)self.view setViewDelegate:self];
+    self.selectedCat = [self.categories objectAtIndex:kSelectedCat];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    //[self didRotateFromInterfaceOrientation:[UIApplication sharedApplication].statusBarOrientation];
 }
 
 #pragma mark -
@@ -77,38 +100,65 @@
 
 // delegate protocol to tell which image is selected
 - (void)openFlowView:(AFOpenFlowView *)openFlowView selectionDidChange:(int)index{
-    
-	SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
-    controller.spotCategory = [categories objectAtIndex:index];
-    [self.navigationController pushViewController:controller animated:YES];
-    
+    if (index < [self.categories count] && index > -1) {
+        self.selectedCat = [self.categories objectAtIndex:index];
+    }
+}
+
+- (void)didSelectCoverIndex:(int)index {
+    [self showSpotList];
 }
 
 // setting the image 1 as the default pic
 - (UIImage *)defaultImage {
     
-	return [UIImage imageNamed:@"58.png"];
+	return [[self.categories objectAtIndex:kSelectedCat] spotcategory_photo];
 }
 
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
     if (toInterfaceOrientation==UIInterfaceOrientationPortrait) {
-        [self.navigationController popViewControllerAnimated:NO];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.transitionController transitionToViewController:appDelegate.categoryViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve];
     }
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark -
+#pragma mark event handling
+
+-(IBAction)descriptionButtonPressed:(id)sender {
+    [self showCurrentDescription];
+}
+
+-(IBAction)spotListButtonPressed:(id)sender {
+    [self showSpotList];
+}
+
+-(void) showCurrentDescription {
+    if (self.selectedCat != nil) {
+        CategoryDescriptionViewController *controller = [[[CategoryDescriptionViewController alloc] initWithNibName:@"CategoryDescriptionViewController" bundle:nil] autorelease];
+        controller.cat = self.selectedCat;
+        
+        [self presentModalViewController:controller animated:YES];
+    }
+}
+
+-(void) showSpotList {
+    SpotListViewController *controller = [[[SpotListViewController alloc] initWithNibName:@"SpotListViewController" bundle:nil] autorelease];
+    controller.spotCategory = self.selectedCat;
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.transitionController transitionToViewController:navController withOptions:UIViewAnimationOptionTransitionCrossDissolve];
+}
+
 
 @end

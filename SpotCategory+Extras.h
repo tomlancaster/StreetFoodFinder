@@ -21,6 +21,7 @@
               failureSelector:(SEL) failure;
 
 -(NSString *) getLocalizedName;
+-(NSString *) getLocalizedDescription;
 
 + (void) syncFromResponse:(NSString *) response;
 

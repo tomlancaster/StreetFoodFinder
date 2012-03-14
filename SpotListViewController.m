@@ -16,6 +16,8 @@
 #import "SpotDetailViewController.h"
 #import "SpotSearchTableViewCell.h"
 #import "NormalCellBackground.h"
+#import "CategoryViewController.h"
+#import "CoverFlowViewController.h"
 
 @implementation SpotListViewController
 @synthesize sortButton;
@@ -23,12 +25,18 @@
 @synthesize myTableView;
 @synthesize spots;
 @synthesize sortBy;
+@synthesize myNavBar;
+@synthesize myNavItem;
+@synthesize backButton;
 
 -(void) dealloc {
     SafeRelease(sortButton);
     SafeRelease(spotCategory);
     SafeRelease(spots);
     SafeRelease(myTableView);
+    SafeRelease(myNavBar);
+    SafeRelease(myNavItem);
+    SafeRelease(backButton);
     sortBy = 0;
     [super dealloc];
 }
@@ -102,8 +110,7 @@
     
     cell.backgroundView = [[[NormalCellBackground alloc] init] autorelease];
     cell.selectedBackgroundView = [[[NormalCellBackground alloc] init] autorelease];
-
-    
+ 
     CALayer *l = [cell.backgroundView layer];
     [l setMasksToBounds:YES];
     [l setCornerRadius:5.0];  
@@ -111,13 +118,19 @@
     [l setBorderColor:[[UIColor darkGrayColor] CGColor]];
     
 }
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [myTableView setBackgroundView:nil];
+    [myTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
     self.navigationItem.rightBarButtonItem = self.sortButton;
+    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.navigationController.navigationBar.tintColor = TNH_RED;
+    self.backButton.title = NSLocalizedString(@"Dishes", @"button title");
     if (self.spotCategory != nil) {
         self.title = [self.spotCategory getLocalizedName];
     } else {
@@ -133,6 +146,9 @@
     }
 }
 
+-(void) viewWillAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -143,7 +159,25 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark -
+#pragma mark event handling
+
+-(IBAction)backButtonPressed:(id)sender {
+    [self openCategoryView];
+}
+
+-(void) openCategoryView {
+     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        CategoryViewController *controller = [[[CategoryViewController alloc] initWithNibName:@"CategoryViewController"  bundle:nil] autorelease];
+        [appDelegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationOptionTransitionNone];
+    } else {
+        CoverFlowViewController *controller = [[[CoverFlowViewController alloc] initWithNibName:@"CoverFlowViewController" bundle:nil] autorelease];
+        [appDelegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationOptionTransitionNone];
+    }
 }
 
 #pragma mark action sheet methods

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E231A534151053F600C884B0 /* SpotPhoto+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A533151053F600C884B0 /* SpotPhoto+Extras.m */; };
+		E231A538151055FE00C884B0 /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A537151055FE00C884B0 /* Spot.m */; };
+		E231A53B151055FF00C884B0 /* SpotPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A53A151055FF00C884B0 /* SpotPhoto.m */; };
+		E231A5931510622300C884B0 /* street-food_app1_BlackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E231A58F1510622300C884B0 /* street-food_app1_BlackBG.png */; };
+		E231A5941510622300C884B0 /* street-food_App1.png in Resources */ = {isa = PBXBuildFile; fileRef = E231A5901510622300C884B0 /* street-food_App1.png */; };
+		E231A5951510622300C884B0 /* street-food_Large_BlackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E231A5911510622300C884B0 /* street-food_Large_BlackBG.png */; };
+		E231A5961510622300C884B0 /* street-food_Large.png in Resources */ = {isa = PBXBuildFile; fileRef = E231A5921510622300C884B0 /* street-food_Large.png */; };
+		E231A5991510752800C884B0 /* RMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A5981510752800C884B0 /* RMMapViewController.m */; };
 		E235B8AD14DFC4FA000AC94E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235B8AC14DFC4FA000AC94E /* UIKit.framework */; };
 		E235B8AF14DFC4FA000AC94E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235B8AE14DFC4FA000AC94E /* Foundation.framework */; };
 		E235B8B114DFC4FA000AC94E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235B8B014DFC4FA000AC94E /* CoreGraphics.framework */; };
@@ -42,7 +50,6 @@
 		E235B93014DFD233000AC94E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B92F14DFD233000AC94E /* User.m */; };
 		E235B93314DFD233000AC94E /* SpotTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93214DFD233000AC94E /* SpotTip.m */; };
 		E235B93614DFD234000AC94E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93514DFD234000AC94E /* Country.m */; };
-		E235B93C14DFD234000AC94E /* SpotPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93B14DFD234000AC94E /* SpotPhoto.m */; };
 		E235B93F14DFD234000AC94E /* UserPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B93E14DFD234000AC94E /* UserPhoto.m */; };
 		E235B94814DFDA77000AC94E /* AFItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B94214DFDA77000AC94E /* AFItemView.m */; };
 		E235B94914DFDA77000AC94E /* AFOpenFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E235B94514DFDA77000AC94E /* AFOpenFlowView.m */; };
@@ -61,6 +68,10 @@
 		E259727D14F21F52006612FA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E259727C14F21F52006612FA /* MapKit.framework */; };
 		E259727F14F21F70006612FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E259727E14F21F70006612FA /* MessageUI.framework */; };
 		E259728114F224BB006612FA /* bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = E259728014F224BB006612FA /* bkg.png */; };
+		E28659BA150732480058B538 /* CategoryDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28659B8150732480058B538 /* CategoryDescriptionViewController.m */; };
+		E28659BB150732480058B538 /* CategoryDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28659B9150732480058B538 /* CategoryDescriptionViewController.xib */; };
+		E28659BF15074E110058B538 /* TransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28659BE15074E110058B538 /* TransitionController.m */; };
+		E28659C21509D7480058B538 /* StreetFood.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E28659C11509D7480058B538 /* StreetFood.sqlite */; };
 		E299DBB114EF9F820023A890 /* 54.png in Resources */ = {isa = PBXBuildFile; fileRef = E299DBAD14EF9F820023A890 /* 54.png */; };
 		E299DBB214EF9F820023A890 /* 56.png in Resources */ = {isa = PBXBuildFile; fileRef = E299DBAE14EF9F820023A890 /* 56.png */; };
 		E299DBB314EF9F820023A890 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = E299DBAF14EF9F820023A890 /* 58.png */; };
@@ -68,7 +79,6 @@
 		E299DBB814EFA0F80023A890 /* CoverFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E299DBB614EFA0F80023A890 /* CoverFlowViewController.m */; };
 		E299DBB914EFA0F80023A890 /* CoverFlowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E299DBB714EFA0F80023A890 /* CoverFlowViewController.xib */; };
 		E299DC5514F1F7D80023A890 /* Review+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E299DC5414F1F7D80023A890 /* Review+Extras.m */; };
-		E299DC5B14F201490023A890 /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = E299DC5A14F201490023A890 /* Spot.m */; };
 		E299DC6214F2070C0023A890 /* SpotDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = E299DC5C14F2070C0023A890 /* SpotDetails.xib */; };
 		E299DC6314F2070C0023A890 /* SpotDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E299DC5E14F2070C0023A890 /* SpotDetailsTableViewCell.m */; };
 		E299DC6414F2070C0023A890 /* SpotDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E299DC5F14F2070C0023A890 /* SpotDetailsTableViewCell.xib */; };
@@ -136,6 +146,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E231A532151053F600C884B0 /* SpotPhoto+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpotPhoto+Extras.h"; sourceTree = "<group>"; };
+		E231A533151053F600C884B0 /* SpotPhoto+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpotPhoto+Extras.m"; sourceTree = "<group>"; };
+		E231A536151055FE00C884B0 /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
+		E231A537151055FE00C884B0 /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
+		E231A539151055FF00C884B0 /* SpotPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotPhoto.h; sourceTree = "<group>"; };
+		E231A53A151055FF00C884B0 /* SpotPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotPhoto.m; sourceTree = "<group>"; };
+		E231A58F1510622300C884B0 /* street-food_app1_BlackBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-food_app1_BlackBG.png"; sourceTree = "<group>"; };
+		E231A5901510622300C884B0 /* street-food_App1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-food_App1.png"; sourceTree = "<group>"; };
+		E231A5911510622300C884B0 /* street-food_Large_BlackBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-food_Large_BlackBG.png"; sourceTree = "<group>"; };
+		E231A5921510622300C884B0 /* street-food_Large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-food_Large.png"; sourceTree = "<group>"; };
+		E231A5971510752800C884B0 /* RMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapViewController.h; sourceTree = "<group>"; };
+		E231A5981510752800C884B0 /* RMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapViewController.m; sourceTree = "<group>"; };
 		E235B8A814DFC4FA000AC94E /* StreetFoodFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFoodFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235B8AC14DFC4FA000AC94E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E235B8AE14DFC4FA000AC94E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -202,8 +224,6 @@
 		E235B93214DFD233000AC94E /* SpotTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotTip.m; sourceTree = "<group>"; };
 		E235B93414DFD234000AC94E /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		E235B93514DFD234000AC94E /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
-		E235B93A14DFD234000AC94E /* SpotPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotPhoto.h; sourceTree = "<group>"; };
-		E235B93B14DFD234000AC94E /* SpotPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotPhoto.m; sourceTree = "<group>"; };
 		E235B93D14DFD234000AC94E /* UserPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhoto.h; sourceTree = "<group>"; };
 		E235B93E14DFD234000AC94E /* UserPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhoto.m; sourceTree = "<group>"; };
 		E235B94114DFDA77000AC94E /* AFItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFItemView.h; sourceTree = "<group>"; };
@@ -237,6 +257,12 @@
 		E259727C14F21F52006612FA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E259727E14F21F70006612FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E259728014F224BB006612FA /* bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bkg.png; sourceTree = "<group>"; };
+		E28659B7150732480058B538 /* CategoryDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDescriptionViewController.h; sourceTree = "<group>"; };
+		E28659B8150732480058B538 /* CategoryDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryDescriptionViewController.m; sourceTree = "<group>"; };
+		E28659B9150732480058B538 /* CategoryDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryDescriptionViewController.xib; sourceTree = "<group>"; };
+		E28659BD15074E110058B538 /* TransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionController.h; sourceTree = "<group>"; };
+		E28659BE15074E110058B538 /* TransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionController.m; sourceTree = "<group>"; };
+		E28659C11509D7480058B538 /* StreetFood.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StreetFood.sqlite; sourceTree = "<group>"; };
 		E299DBAD14EF9F820023A890 /* 54.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 54.png; sourceTree = "<group>"; };
 		E299DBAE14EF9F820023A890 /* 56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 56.png; sourceTree = "<group>"; };
 		E299DBAF14EF9F820023A890 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
@@ -246,8 +272,6 @@
 		E299DBB714EFA0F80023A890 /* CoverFlowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverFlowViewController.xib; sourceTree = "<group>"; };
 		E299DC5314F1F7D80023A890 /* Review+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Review+Extras.h"; sourceTree = "<group>"; };
 		E299DC5414F1F7D80023A890 /* Review+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Review+Extras.m"; sourceTree = "<group>"; };
-		E299DC5914F201480023A890 /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
-		E299DC5A14F201490023A890 /* Spot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
 		E299DC5C14F2070C0023A890 /* SpotDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotDetails.xib; sourceTree = "<group>"; };
 		E299DC5D14F2070C0023A890 /* SpotDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotDetailsTableViewCell.h; sourceTree = "<group>"; };
 		E299DC5E14F2070C0023A890 /* SpotDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotDetailsTableViewCell.m; sourceTree = "<group>"; };
@@ -376,6 +400,7 @@
 		E235B89D14DFC4FA000AC94E = {
 			isa = PBXGroup;
 			children = (
+				E28659C01509D6840058B538 /* Resources */,
 				E259727E14F21F70006612FA /* MessageUI.framework */,
 				E2B3EAAE14F2161F007A689F /* libMWPhotoBrowser.a */,
 				E2D9C6BB14EE2315009FE891 /* Cells */,
@@ -496,8 +521,8 @@
 			children = (
 				E235B93D14DFD234000AC94E /* UserPhoto.h */,
 				E235B93E14DFD234000AC94E /* UserPhoto.m */,
-				E235B93A14DFD234000AC94E /* SpotPhoto.h */,
-				E235B93B14DFD234000AC94E /* SpotPhoto.m */,
+				E231A532151053F600C884B0 /* SpotPhoto+Extras.h */,
+				E231A533151053F600C884B0 /* SpotPhoto+Extras.m */,
 				E2B7A1471506F71500771A0C /* SpotCategory.h */,
 				E2B7A1481506F71500771A0C /* SpotCategory.m */,
 				E235B94B14DFDB2C000AC94E /* SpotCategory+Extras.h */,
@@ -510,8 +535,6 @@
 				E235B92F14DFD233000AC94E /* User.m */,
 				E235B8E114DFC708000AC94E /* User+Extras.h */,
 				E235B8DB14DFC708000AC94E /* User+Extras.m */,
-				E299DC5914F201480023A890 /* Spot.h */,
-				E299DC5A14F201490023A890 /* Spot.m */,
 				E235B95414DFDE57000AC94E /* Spot+Extras.h */,
 				E235B95514DFDE57000AC94E /* Spot+Extras.m */,
 				E235B92214DFD233000AC94E /* Region.h */,
@@ -535,6 +558,10 @@
 				E2C8E59314F22E8700A58CB4 /* Review.m */,
 				E2B7A1441506F6EA00771A0C /* City.h */,
 				E2B7A1451506F6EA00771A0C /* City.m */,
+				E231A536151055FE00C884B0 /* Spot.h */,
+				E231A537151055FE00C884B0 /* Spot.m */,
+				E231A539151055FF00C884B0 /* SpotPhoto.h */,
+				E231A53A151055FF00C884B0 /* SpotPhoto.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -560,6 +587,18 @@
 				E235B96014DFDFBF000AC94E /* ELCTextfieldCell.h */,
 			);
 			name = Chrome;
+			sourceTree = "<group>";
+		};
+		E28659C01509D6840058B538 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E231A58F1510622300C884B0 /* street-food_app1_BlackBG.png */,
+				E231A5901510622300C884B0 /* street-food_App1.png */,
+				E231A5911510622300C884B0 /* street-food_Large_BlackBG.png */,
+				E231A5921510622300C884B0 /* street-food_Large.png */,
+				E28659C11509D7480058B538 /* StreetFood.sqlite */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E299DBAB14EF9F570023A890 /* categories */ = {
@@ -611,6 +650,8 @@
 				E299DC6914F2087D0023A890 /* MapView.xib */,
 				E299DC6A14F2087D0023A890 /* MapViewController.h */,
 				E299DC6B14F2087D0023A890 /* MapViewController.m */,
+				E231A5971510752800C884B0 /* RMMapViewController.h */,
+				E231A5981510752800C884B0 /* RMMapViewController.m */,
 				E299DC6614F207B10023A890 /* ReviewTableViewController.h */,
 				E299DC6714F207B10023A890 /* ReviewTableViewController.m */,
 				E299DC5C14F2070C0023A890 /* SpotDetails.xib */,
@@ -630,6 +671,11 @@
 				E299DBB514EFA0F80023A890 /* CoverFlowViewController.h */,
 				E299DBB614EFA0F80023A890 /* CoverFlowViewController.m */,
 				E299DBB714EFA0F80023A890 /* CoverFlowViewController.xib */,
+				E28659B7150732480058B538 /* CategoryDescriptionViewController.h */,
+				E28659B8150732480058B538 /* CategoryDescriptionViewController.m */,
+				E28659B9150732480058B538 /* CategoryDescriptionViewController.xib */,
+				E28659BD15074E110058B538 /* TransitionController.h */,
+				E28659BE15074E110058B538 /* TransitionController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -779,6 +825,12 @@
 				E299DC8C14F20A160023A890 /* tablecell-bkg@2x.png in Resources */,
 				E259728114F224BB006612FA /* bkg.png in Resources */,
 				E2C8E59A14F2325900A58CB4 /* reviews.xib in Resources */,
+				E28659BB150732480058B538 /* CategoryDescriptionViewController.xib in Resources */,
+				E28659C21509D7480058B538 /* StreetFood.sqlite in Resources */,
+				E231A5931510622300C884B0 /* street-food_app1_BlackBG.png in Resources */,
+				E231A5941510622300C884B0 /* street-food_App1.png in Resources */,
+				E231A5951510622300C884B0 /* street-food_Large_BlackBG.png in Resources */,
+				E231A5961510622300C884B0 /* street-food_Large.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,7 +870,6 @@
 				E235B93014DFD233000AC94E /* User.m in Sources */,
 				E235B93314DFD233000AC94E /* SpotTip.m in Sources */,
 				E235B93614DFD234000AC94E /* Country.m in Sources */,
-				E235B93C14DFD234000AC94E /* SpotPhoto.m in Sources */,
 				E235B93F14DFD234000AC94E /* UserPhoto.m in Sources */,
 				E235B94814DFDA77000AC94E /* AFItemView.m in Sources */,
 				E235B94914DFDA77000AC94E /* AFOpenFlowView.m in Sources */,
@@ -849,7 +900,6 @@
 				E2D9C6CD14EE35DA009FE891 /* RatingView.m in Sources */,
 				E299DBB814EFA0F80023A890 /* CoverFlowViewController.m in Sources */,
 				E299DC5514F1F7D80023A890 /* Review+Extras.m in Sources */,
-				E299DC5B14F201490023A890 /* Spot.m in Sources */,
 				E299DC6314F2070C0023A890 /* SpotDetailsTableViewCell.m in Sources */,
 				E299DC6514F2070C0023A890 /* SpotDetailViewController.m in Sources */,
 				E299DC6814F207B10023A890 /* ReviewTableViewController.m in Sources */,
@@ -866,6 +916,12 @@
 				E2B7A1421506F4F500771A0C /* UIImageToDataTransformer.m in Sources */,
 				E2B7A1461506F6EA00771A0C /* City.m in Sources */,
 				E2B7A1491506F71500771A0C /* SpotCategory.m in Sources */,
+				E28659BA150732480058B538 /* CategoryDescriptionViewController.m in Sources */,
+				E28659BF15074E110058B538 /* TransitionController.m in Sources */,
+				E231A534151053F600C884B0 /* SpotPhoto+Extras.m in Sources */,
+				E231A538151055FE00C884B0 /* Spot.m in Sources */,
+				E231A53B151055FF00C884B0 /* SpotPhoto.m in Sources */,
+				E231A5991510752800C884B0 /* RMMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,5 @@
 
 -(void) sortReviewsBy:(NSInteger)code;
 
-- (void) getReviews;
 
 @end

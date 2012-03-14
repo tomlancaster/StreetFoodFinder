@@ -11,6 +11,9 @@
 @class ViewController;
 @class User;
 @class CategoryViewController;
+@class TransitionController;
+@class CoverFlowViewController;
+@class CategoryViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, ASIHTTPRequestDelegate> {
     NSManagedObjectModel *managedObjectModel;
@@ -22,14 +25,17 @@
     BOOL loggedIn;
     User *globalUser;
     BOOL shouldNotLogOut;
-    CategoryViewController *viewController;
+    UIViewController *viewController;
     NSOperationQueue *queue;
+    TransitionController *transitionController;
+    CoverFlowViewController *coverFlowViewController;
+    CategoryViewController *categoryViewController;
 
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (assign, getter = isLoggedIn) BOOL loggedIn;
-@property (strong, nonatomic) CategoryViewController *viewController;
+@property (strong, nonatomic) UIViewController *viewController;
 @property (nonatomic, retain) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain) NSManagedObjectContext *defaultManagedObjectContext;
 @property (nonatomic, retain) NSManagedObjectContext *bgManagedObjectContext;
@@ -38,6 +44,10 @@
 @property (assign) BOOL shouldNotLogOut;
 @property (nonatomic, retain) User *globalUser;
 @property (nonatomic, retain) NSOperationQueue *queue;
+@property (nonatomic, retain) TransitionController *transitionController;
+@property (nonatomic, retain) CoverFlowViewController *coverFlowViewController;
+@property (nonatomic, retain) CategoryViewController *categoryViewController;
+
 
 
 - (void)checkForNewVersion;

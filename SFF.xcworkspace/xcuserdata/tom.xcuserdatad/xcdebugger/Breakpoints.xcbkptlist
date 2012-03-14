@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "351492959.21178"
+         timestampString = "353392598.177708"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
          landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -64,26 +64,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "StreetFoodFinder/AppDelegate.m"
-         timestampString = "351487968.827315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "155"
-         endingLineNumber = "155"
-         landmarkName = "-didGetCategories:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "352779102.687364"
+         timestampString = "353393765.078679"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
          landmarkName = "+syncFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,26 +79,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "351492959.21178"
+         timestampString = "353392598.177708"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
+         startingLineNumber = "41"
+         endingLineNumber = "41"
          landmarkName = "+getSpotsForCategoryId:withDelegate:finishSelector:failureSelector:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "StreetFoodFinder/AppDelegate.m"
-         timestampString = "351487968.827315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
-         landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -135,11 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "351492959.21178"
+         timestampString = "353393765.078679"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "351492959.21178"
+         timestampString = "353393765.078679"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
+         startingLineNumber = "123"
+         endingLineNumber = "123"
          landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -172,17 +144,16 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "352779632.606374"
+         timestampString = "353393765.078679"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
-         landmarkName = "+syncFromResponse:"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
+         landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

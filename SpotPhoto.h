@@ -2,7 +2,7 @@
 //  SpotPhoto.h
 //  StreetFoodFinder
 //
-//  Created by Tom Lancaster on 2/6/12.
+//  Created by Tom Lancaster on 3/14/12.
 //  Copyright (c) 2012 Sunshine Open Solutions. All rights reserved.
 //
 
@@ -13,9 +13,10 @@
 
 @interface SpotPhoto : NSManagedObject
 
+@property (nonatomic, retain) NSString * caption;
+@property (nonatomic, retain) id photo_small;
 @property (nonatomic, retain) NSNumber * spot_id;
-@property (nonatomic, retain) id photo;
+@property (nonatomic, retain) id photo_large;
 @property (nonatomic, retain) Spot *spot;
-@property (nonatomic, retain) NSString *caption;
 
 @end

@@ -77,9 +77,29 @@
 	if (persistentStoreCoordinator != nil) {
         return persistentStoreCoordinator;
     }
+	NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"database.sqlite"];
+    NSURL *storeUrl = [NSURL fileURLWithPath: storePath];
 	
-    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"database.sqlite"]];
-	
+    
+    /*
+     Set up the store.
+     For the sake of illustration, provide a pre-populated default store.
+     */
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    // If the expected store doesn’t exist, copy the default store.
+    if (![fileManager fileExistsAtPath:storePath]) {
+        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"StreetFood1" ofType:@"sqlite"];
+        if ([fileManager fileExistsAtPath:defaultStorePath]) {
+            // nothing to do - we have a populated database already
+            [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
+        } else {
+            // trigger population of the database
+            [delegate populateDatabase];
+        }
+    }
+    
+    
+    
 	NSError *error = nil;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:

@@ -2,7 +2,7 @@
 //  Spot.h
 //  StreetFoodFinder
 //
-//  Created by Tom Lancaster on 2/20/12.
+//  Created by Tom Lancaster on 3/14/12.
 //  Copyright (c) 2012 Sunshine Open Solutions. All rights reserved.
 //
 
@@ -25,20 +25,25 @@
 @property (nonatomic, retain) NSNumber * spot_id;
 @property (nonatomic, retain) NSNumber * spotcategory_id;
 @property (nonatomic, retain) NSNumber * star_rating;
+@property (nonatomic, retain) NSNumber * oh_morning;
+@property (nonatomic, retain) NSNumber * oh_lunch;
+@property (nonatomic, retain) NSNumber * oh_afternoon;
+@property (nonatomic, retain) NSNumber * oh_evening;
+@property (nonatomic, retain) NSNumber * oh_late;
 @property (nonatomic, retain) City *city;
+@property (nonatomic, retain) NSSet *reviews;
 @property (nonatomic, retain) SpotCategory *spot_category;
 @property (nonatomic, retain) NSSet *spot_photos;
-@property (nonatomic, retain) NSSet *reviews;
 @end
 
 @interface Spot (CoreDataGeneratedAccessors)
 
-- (void)addSpot_photosObject:(SpotPhoto *)value;
-- (void)removeSpot_photosObject:(SpotPhoto *)value;
-- (void)addSpot_photos:(NSSet *)values;
-- (void)removeSpot_photos:(NSSet *)values;
 - (void)addReviewsObject:(Review *)value;
 - (void)removeReviewsObject:(Review *)value;
 - (void)addReviews:(NSSet *)values;
 - (void)removeReviews:(NSSet *)values;
+- (void)addSpot_photosObject:(SpotPhoto *)value;
+- (void)removeSpot_photosObject:(SpotPhoto *)value;
+- (void)addSpot_photos:(NSSet *)values;
+- (void)removeSpot_photos:(NSSet *)values;
 @end
