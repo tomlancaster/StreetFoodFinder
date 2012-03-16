@@ -15,6 +15,9 @@
 		E231A5951510622300C884B0 /* street-food_Large_BlackBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E231A5911510622300C884B0 /* street-food_Large_BlackBG.png */; };
 		E231A5961510622300C884B0 /* street-food_Large.png in Resources */ = {isa = PBXBuildFile; fileRef = E231A5921510622300C884B0 /* street-food_Large.png */; };
 		E231A5991510752800C884B0 /* RMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A5981510752800C884B0 /* RMMapViewController.m */; };
+		E231A74D15119F2A00C884B0 /* hanoi_tiles.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E231A74C15119F2A00C884B0 /* hanoi_tiles.sqlite */; };
+		E231A7711511A4D600C884B0 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E231A7701511A4D600C884B0 /* libMapView.a */; };
+		E231A7731511A4EB00C884B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E231A7721511A4EB00C884B0 /* libsqlite3.dylib */; };
 		E235B8AD14DFC4FA000AC94E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235B8AC14DFC4FA000AC94E /* UIKit.framework */; };
 		E235B8AF14DFC4FA000AC94E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235B8AE14DFC4FA000AC94E /* Foundation.framework */; };
 		E235B8B114DFC4FA000AC94E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235B8B014DFC4FA000AC94E /* CoreGraphics.framework */; };
@@ -107,6 +110,19 @@
 		E2B7A1421506F4F500771A0C /* UIImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A1411506F4F500771A0C /* UIImageToDataTransformer.m */; };
 		E2B7A1461506F6EA00771A0C /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A1451506F6EA00771A0C /* City.m */; };
 		E2B7A1491506F71500771A0C /* SpotCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7A1481506F71500771A0C /* SpotCategory.m */; };
+		E2BC340815131F0800E736E5 /* 12-eye.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC340615131F0800E736E5 /* 12-eye.png */; };
+		E2BC340915131F0800E736E5 /* 12-eye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC340715131F0800E736E5 /* 12-eye@2x.png */; };
+		E2BC3415151320E500E736E5 /* 59-info.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC3413151320E500E736E5 /* 59-info.png */; };
+		E2BC3416151320E500E736E5 /* 59-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC3414151320E500E736E5 /* 59-info@2x.png */; };
+		E2BC3419151321ED00E736E5 /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC3417151321ED00E736E5 /* 74-location.png */; };
+		E2BC341A151321ED00E736E5 /* 74-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC3418151321ED00E736E5 /* 74-location@2x.png */; };
+		E2BC341D1513257000E736E5 /* bowl.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC341B1513257000E736E5 /* bowl.png */; };
+		E2BC341E1513257000E736E5 /* bowl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BC341C1513257000E736E5 /* bowl@2x.png */; };
+		E2BE5C121511E7E200C5839F /* marker-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BE5C0F1511E7E200C5839F /* marker-blue.png */; };
+		E2BE5C131511E7E200C5839F /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BE5C101511E7E200C5839F /* marker-red.png */; };
+		E2BE5C141511E7E200C5839F /* marker-X.png in Resources */ = {isa = PBXBuildFile; fileRef = E2BE5C111511E7E200C5839F /* marker-X.png */; };
+		E2BE5C1C1511F6AB00C5839F /* MapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BE5C1B1511F6AB00C5839F /* MapAnnotationView.m */; };
+		E2BE5C1E1511F6C600C5839F /* MapAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2BE5C1D1511F6C600C5839F /* MapAnnotationView.xib */; };
 		E2C8E59414F22E8700A58CB4 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C8E59314F22E8700A58CB4 /* Review.m */; };
 		E2C8E59814F2311F00A58CB4 /* XemziCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C8E59614F2311F00A58CB4 /* XemziCellBackground.m */; };
 		E2C8E59A14F2325900A58CB4 /* reviews.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C8E59914F2325900A58CB4 /* reviews.xib */; };
@@ -128,8 +144,6 @@
 		E2D9C64814E51B63009FE891 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D9C64714E51B63009FE891 /* MobileCoreServices.framework */; };
 		E2D9C64A14E51B78009FE891 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D9C64914E51B78009FE891 /* SystemConfiguration.framework */; };
 		E2D9C64C14E51B7E009FE891 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D9C64B14E51B7E009FE891 /* libz.dylib */; };
-		E2D9C65014ECC790009FE891 /* 74-location.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C64E14ECC790009FE891 /* 74-location.png */; };
-		E2D9C65114ECC790009FE891 /* 74-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C64F14ECC790009FE891 /* 74-location@2x.png */; };
 		E2D9C65514ECC826009FE891 /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C65314ECC826009FE891 /* NearbyViewController.m */; };
 		E2D9C65614ECC826009FE891 /* NearbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D9C65414ECC826009FE891 /* NearbyViewController.xib */; };
 		E2D9C65914ECCA75009FE891 /* SSCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C65814ECCA75009FE891 /* SSCLController.m */; };
@@ -145,6 +159,37 @@
 		E2D9C6CD14EE35DA009FE891 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D9C6CC14EE35DA009FE891 /* RatingView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E231A77D1511A7D800C884B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E231A7751511A7D800C884B0 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F31EFA1331050A00122B16;
+			remoteInfo = MapView;
+		};
+		E231A77F1511A7D800C884B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E231A7751511A7D800C884B0 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17157D87133BBC8300E28941;
+			remoteInfo = MapViewTests;
+		};
+		E231A7811511A7D800C884B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E231A7751511A7D800C884B0 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BF3078F0F8AC5C0007014EE;
+			remoteInfo = "Unit Tests";
+		};
+		E231A7831511A7E300C884B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E231A7751511A7D800C884B0 /* MapView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E231A532151053F600C884B0 /* SpotPhoto+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpotPhoto+Extras.h"; sourceTree = "<group>"; };
 		E231A533151053F600C884B0 /* SpotPhoto+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpotPhoto+Extras.m"; sourceTree = "<group>"; };
@@ -158,6 +203,10 @@
 		E231A5921510622300C884B0 /* street-food_Large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "street-food_Large.png"; sourceTree = "<group>"; };
 		E231A5971510752800C884B0 /* RMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMMapViewController.h; sourceTree = "<group>"; };
 		E231A5981510752800C884B0 /* RMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapViewController.m; sourceTree = "<group>"; };
+		E231A74C15119F2A00C884B0 /* hanoi_tiles.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanoi_tiles.sqlite; sourceTree = "<group>"; };
+		E231A7701511A4D600C884B0 /* libMapView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMapView.a; path = "../xcode_build_output/Release-iphoneos/libMapView.a"; sourceTree = "<group>"; };
+		E231A7721511A4EB00C884B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		E231A7751511A7D800C884B0 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "modules/route-me/MapView/MapView.xcodeproj"; sourceTree = "<group>"; };
 		E235B8A814DFC4FA000AC94E /* StreetFoodFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFoodFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235B8AC14DFC4FA000AC94E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E235B8AE14DFC4FA000AC94E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -310,6 +359,20 @@
 		E2B7A1451506F6EA00771A0C /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		E2B7A1471506F71500771A0C /* SpotCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotCategory.h; sourceTree = "<group>"; };
 		E2B7A1481506F71500771A0C /* SpotCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotCategory.m; sourceTree = "<group>"; };
+		E2BC340615131F0800E736E5 /* 12-eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-eye.png"; sourceTree = "<group>"; };
+		E2BC340715131F0800E736E5 /* 12-eye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-eye@2x.png"; sourceTree = "<group>"; };
+		E2BC3413151320E500E736E5 /* 59-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info.png"; sourceTree = "<group>"; };
+		E2BC3414151320E500E736E5 /* 59-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info@2x.png"; sourceTree = "<group>"; };
+		E2BC3417151321ED00E736E5 /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location.png"; sourceTree = "<group>"; };
+		E2BC3418151321ED00E736E5 /* 74-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "74-location@2x.png"; sourceTree = "<group>"; };
+		E2BC341B1513257000E736E5 /* bowl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bowl.png; sourceTree = "<group>"; };
+		E2BC341C1513257000E736E5 /* bowl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bowl@2x.png"; sourceTree = "<group>"; };
+		E2BE5C0F1511E7E200C5839F /* marker-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue.png"; path = "modules/route-me/samples/MarkerMurder/marker-blue.png"; sourceTree = "<group>"; };
+		E2BE5C101511E7E200C5839F /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-red.png"; path = "modules/route-me/samples/MarkerMurder/marker-red.png"; sourceTree = "<group>"; };
+		E2BE5C111511E7E200C5839F /* marker-X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-X.png"; path = "modules/route-me/samples/MarkerMurder/marker-X.png"; sourceTree = "<group>"; };
+		E2BE5C1A1511F6AB00C5839F /* MapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotationView.h; sourceTree = "<group>"; };
+		E2BE5C1B1511F6AB00C5839F /* MapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotationView.m; sourceTree = "<group>"; };
+		E2BE5C1D1511F6C600C5839F /* MapAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAnnotationView.xib; sourceTree = "<group>"; };
 		E2C8E59214F22E8700A58CB4 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
 		E2C8E59314F22E8700A58CB4 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		E2C8E59614F2311F00A58CB4 /* XemziCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XemziCellBackground.m; sourceTree = "<group>"; };
@@ -347,8 +410,6 @@
 		E2D9C64714E51B63009FE891 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E2D9C64914E51B78009FE891 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E2D9C64B14E51B7E009FE891 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		E2D9C64E14ECC790009FE891 /* 74-location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "74-location.png"; path = "../../../Downloads/Glyphish Pro/icons/74-location.png"; sourceTree = "<group>"; };
-		E2D9C64F14ECC790009FE891 /* 74-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "74-location@2x.png"; path = "../../../Downloads/Glyphish Pro/icons/74-location@2x.png"; sourceTree = "<group>"; };
 		E2D9C65214ECC826009FE891 /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyViewController.h; sourceTree = "<group>"; };
 		E2D9C65314ECC826009FE891 /* NearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyViewController.m; sourceTree = "<group>"; };
 		E2D9C65414ECC826009FE891 /* NearbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyViewController.xib; sourceTree = "<group>"; };
@@ -377,6 +438,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E231A7731511A4EB00C884B0 /* libsqlite3.dylib in Frameworks */,
+				E231A7711511A4D600C884B0 /* libMapView.a in Frameworks */,
 				E259727F14F21F70006612FA /* MessageUI.framework in Frameworks */,
 				E259727D14F21F52006612FA /* MapKit.framework in Frameworks */,
 				E2B3EAAF14F2161F007A689F /* libMWPhotoBrowser.a in Frameworks */,
@@ -397,14 +460,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E231A7761511A7D800C884B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E231A77E1511A7D800C884B0 /* libMapView.a */,
+				E231A7801511A7D800C884B0 /* MapViewTests.octest */,
+				E231A7821511A7D800C884B0 /* RM Unit Tests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E235B89D14DFC4FA000AC94E = {
 			isa = PBXGroup;
 			children = (
+				E231A7751511A7D800C884B0 /* MapView.xcodeproj */,
+				E231A7721511A4EB00C884B0 /* libsqlite3.dylib */,
+				E231A7701511A4D600C884B0 /* libMapView.a */,
 				E28659C01509D6840058B538 /* Resources */,
 				E259727E14F21F70006612FA /* MessageUI.framework */,
 				E2B3EAAE14F2161F007A689F /* libMWPhotoBrowser.a */,
 				E2D9C6BB14EE2315009FE891 /* Cells */,
-				E2D9C64D14ECC734009FE891 /* Images */,
 				E2D9C59614E4F373009FE891 /* View Controllers */,
 				E2D9C57814E4CB61009FE891 /* ASI */,
 				E235B95714DFDF52000AC94E /* Chrome */,
@@ -592,6 +667,19 @@
 		E28659C01509D6840058B538 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2BC341B1513257000E736E5 /* bowl.png */,
+				E2BC341C1513257000E736E5 /* bowl@2x.png */,
+				E2BC3417151321ED00E736E5 /* 74-location.png */,
+				E2BC3418151321ED00E736E5 /* 74-location@2x.png */,
+				E2BC3413151320E500E736E5 /* 59-info.png */,
+				E2BC3414151320E500E736E5 /* 59-info@2x.png */,
+				E2D9C64D14ECC734009FE891 /* Images */,
+				E2BC340615131F0800E736E5 /* 12-eye.png */,
+				E2BC340715131F0800E736E5 /* 12-eye@2x.png */,
+				E2BE5C0F1511E7E200C5839F /* marker-blue.png */,
+				E2BE5C101511E7E200C5839F /* marker-red.png */,
+				E2BE5C111511E7E200C5839F /* marker-X.png */,
+				E231A74C15119F2A00C884B0 /* hanoi_tiles.sqlite */,
 				E231A58F1510622300C884B0 /* street-food_app1_BlackBG.png */,
 				E231A5901510622300C884B0 /* street-food_App1.png */,
 				E231A5911510622300C884B0 /* street-food_Large_BlackBG.png */,
@@ -652,6 +740,9 @@
 				E299DC6B14F2087D0023A890 /* MapViewController.m */,
 				E231A5971510752800C884B0 /* RMMapViewController.h */,
 				E231A5981510752800C884B0 /* RMMapViewController.m */,
+				E2BE5C1A1511F6AB00C5839F /* MapAnnotationView.h */,
+				E2BE5C1B1511F6AB00C5839F /* MapAnnotationView.m */,
+				E2BE5C1D1511F6C600C5839F /* MapAnnotationView.xib */,
 				E299DC6614F207B10023A890 /* ReviewTableViewController.h */,
 				E299DC6714F207B10023A890 /* ReviewTableViewController.m */,
 				E299DC5C14F2070C0023A890 /* SpotDetails.xib */,
@@ -700,8 +791,6 @@
 				E299DC7E14F20A150023A890 /* tablecell-bkg@2x.png */,
 				E299DBAB14EF9F570023A890 /* categories */,
 				E2D9C6B914EE222A009FE891 /* streetfood.png */,
-				E2D9C64E14ECC790009FE891 /* 74-location.png */,
-				E2D9C64F14ECC790009FE891 /* 74-location@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -753,6 +842,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E231A7841511A7E300C884B0 /* PBXTargetDependency */,
 			);
 			name = StreetFoodFinder;
 			productName = StreetFoodFinder;
@@ -778,12 +868,42 @@
 			mainGroup = E235B89D14DFC4FA000AC94E;
 			productRefGroup = E235B8A914DFC4FA000AC94E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E231A7761511A7D800C884B0 /* Products */;
+					ProjectRef = E231A7751511A7D800C884B0 /* MapView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E235B8A714DFC4FA000AC94E /* StreetFoodFinder */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E231A77E1511A7D800C884B0 /* libMapView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMapView.a;
+			remoteRef = E231A77D1511A7D800C884B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E231A7801511A7D800C884B0 /* MapViewTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MapViewTests.octest;
+			remoteRef = E231A77F1511A7D800C884B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E231A7821511A7D800C884B0 /* RM Unit Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "RM Unit Tests.app";
+			remoteRef = E231A7811511A7D800C884B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E235B8A614DFC4FA000AC94E /* Resources */ = {
@@ -793,8 +913,6 @@
 				E235B8B714DFC4FA000AC94E /* InfoPlist.strings in Resources */,
 				E235B8C314DFC4FA000AC94E /* ViewController.xib in Resources */,
 				E2D9C59B14E4F3A7009FE891 /* CategoryViewController.xib in Resources */,
-				E2D9C65014ECC790009FE891 /* 74-location.png in Resources */,
-				E2D9C65114ECC790009FE891 /* 74-location@2x.png in Resources */,
 				E2D9C65614ECC826009FE891 /* NearbyViewController.xib in Resources */,
 				E2D9C66514ECE41A009FE891 /* SpotListViewController.xib in Resources */,
 				E2D9C6BA14EE222A009FE891 /* streetfood.png in Resources */,
@@ -831,6 +949,19 @@
 				E231A5941510622300C884B0 /* street-food_App1.png in Resources */,
 				E231A5951510622300C884B0 /* street-food_Large_BlackBG.png in Resources */,
 				E231A5961510622300C884B0 /* street-food_Large.png in Resources */,
+				E231A74D15119F2A00C884B0 /* hanoi_tiles.sqlite in Resources */,
+				E2BE5C121511E7E200C5839F /* marker-blue.png in Resources */,
+				E2BE5C131511E7E200C5839F /* marker-red.png in Resources */,
+				E2BE5C141511E7E200C5839F /* marker-X.png in Resources */,
+				E2BE5C1E1511F6C600C5839F /* MapAnnotationView.xib in Resources */,
+				E2BC340815131F0800E736E5 /* 12-eye.png in Resources */,
+				E2BC340915131F0800E736E5 /* 12-eye@2x.png in Resources */,
+				E2BC3415151320E500E736E5 /* 59-info.png in Resources */,
+				E2BC3416151320E500E736E5 /* 59-info@2x.png in Resources */,
+				E2BC3419151321ED00E736E5 /* 74-location.png in Resources */,
+				E2BC341A151321ED00E736E5 /* 74-location@2x.png in Resources */,
+				E2BC341D1513257000E736E5 /* bowl.png in Resources */,
+				E2BC341E1513257000E736E5 /* bowl@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,10 +1053,19 @@
 				E231A538151055FE00C884B0 /* Spot.m in Sources */,
 				E231A53B151055FF00C884B0 /* SpotPhoto.m in Sources */,
 				E231A5991510752800C884B0 /* RMMapViewController.m in Sources */,
+				E2BE5C1C1511F6AB00C5839F /* MapAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E231A7841511A7E300C884B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapView;
+			targetProxy = E231A7831511A7E300C884B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E235B8B514DFC4FA000AC94E /* InfoPlist.strings */ = {
@@ -966,6 +1106,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "../MWPhotoBrowser/MWPhotoBrowser/**";
@@ -997,6 +1138,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StreetFoodFinder/StreetFoodFinder-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "modules/route-me/MapView/**";
 				INFOPLIST_FILE = "StreetFoodFinder/StreetFoodFinder-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1009,6 +1151,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StreetFoodFinder/StreetFoodFinder-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = "modules/route-me/MapView/**";
 				INFOPLIST_FILE = "StreetFoodFinder/StreetFoodFinder-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

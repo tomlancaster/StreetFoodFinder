@@ -19,6 +19,7 @@
 #import "Spot+Extras.h"
 #import "Review.h"
 #import "Spot.h"
+#import "RMMapViewController.h"
 
 #define RADIANS_TO_DEGREES(radians) ((radians) * 180.0 / M_PI)
 
@@ -57,7 +58,11 @@
 
 }
 
-
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -93,6 +98,7 @@
 
 
 - (void)viewOnMap {
+    /*
 	MapViewController *mvController = [[MapViewController alloc] initWithNibName:@"MapView" bundle:[NSBundle mainBundle]];
 	NSArray *spots  = [[NSArray alloc] initWithObjects:self.selectedSpot,nil];
 	mvController.spots = spots;
@@ -100,6 +106,11 @@
 	[spots release];
 	[self.navigationController pushViewController:mvController animated:YES];
 	[mvController release];
+     */
+    RMMapViewController *controller = [[[RMMapViewController alloc] init] autorelease];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.spot = self.selectedSpot;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)viewReviews {

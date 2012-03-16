@@ -49,11 +49,13 @@
 @property (nonatomic, retain) CategoryViewController *categoryViewController;
 
 
+-(UIViewController *) getCurrentRootController;
 
 - (void)checkForNewVersion;
 
 - (void) clearCache;
 
+- (NSString *)tileDbPath;
 
 - (void)checkForNewVersion;
 
@@ -62,6 +64,8 @@
 -(void) didGetCategories:(ASIHTTPRequest *) request;
 
 -(void) populateDatabase;
+
+- (void)createEditableCopyOfTileDatabaseIfNeeded;
 
 
 @end

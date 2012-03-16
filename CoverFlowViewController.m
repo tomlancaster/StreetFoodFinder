@@ -62,11 +62,11 @@
 }
 
 #pragma mark - View lifecycle
-#define kSelectedCat 3
+#define kSelectedCat 0
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    //[[self navigationController] setNavigationBarHidden:YES animated:NO];
 
     // get categories
     self.categories = [[NSManagedObjectContext defaultManagedObjectContext] fetchAllOfEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"] predicate:nil sortKey:@"name_en_us" ascending:YES error:nil];
@@ -82,17 +82,24 @@
         }
         i++;
         
-		NSLog(@"%d is the index",i);
+		//NSLog(@"%d is the index",i);
         
 	}
 	[(AFOpenFlowView *)self.view setNumberOfImages:i+1];
     [(AFOpenFlowView *)self.view setViewDelegate:self];
     self.selectedCat = [self.categories objectAtIndex:kSelectedCat];
+    dishLabel.text = [self.selectedCat getLocalizedName];
+
     
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-    //[self didRotateFromInterfaceOrientation:[UIApplication sharedApplication].statusBarOrientation];
+    [super viewWillAppear:animated];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        [appDelegate.transitionController transitionToViewController:appDelegate.categoryViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve] ;
+    }
+
 }
 
 #pragma mark -
@@ -102,6 +109,7 @@
 - (void)openFlowView:(AFOpenFlowView *)openFlowView selectionDidChange:(int)index{
     if (index < [self.categories count] && index > -1) {
         self.selectedCat = [self.categories objectAtIndex:index];
+        dishLabel.text = [self.selectedCat getLocalizedName];
     }
 }
 
@@ -147,8 +155,9 @@
     if (self.selectedCat != nil) {
         CategoryDescriptionViewController *controller = [[[CategoryDescriptionViewController alloc] initWithNibName:@"CategoryDescriptionViewController" bundle:nil] autorelease];
         controller.cat = self.selectedCat;
-        
-        [self presentModalViewController:controller animated:YES];
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [delegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationCurveEaseIn];
+        //[self presentModalViewController:controller animated:YES];
     }
 }
 

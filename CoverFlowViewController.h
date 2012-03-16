@@ -16,6 +16,7 @@
     SpotCategory *selectedCat;
     IBOutlet UIButton *showSpotsButton;
     IBOutlet UIButton *showDescriptionButton;
+    IBOutlet UILabel *dishLabel;
     
 }
 

@@ -58,7 +58,7 @@ __PRETTY_FUNCTION__, __LINE__);
 #define TNH_RED  [UIColor colorWithRed:178.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 #define API_SERVER @"http://tnhvietnam.xemzi.com"
-
+#define CLOUDMADE_API_KEY @"3f9d2b576e36476cb52627777baddead"
 
 #define FONT_DETAIL [UIFont fontWithName:@"Verdana" size:14]
 #define FONT_MAIN [UIFont fontWithName:@"Verdana Bold" size:18]

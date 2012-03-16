@@ -18,6 +18,7 @@
 #import "NormalCellBackground.h"
 #import "CategoryViewController.h"
 #import "CoverFlowViewController.h"
+#import "AppDelegate.h"
 
 @implementation SpotListViewController
 @synthesize sortButton;
@@ -170,15 +171,16 @@
 }
 
 -(void) openCategoryView {
-     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
-        CategoryViewController *controller = [[[CategoryViewController alloc] initWithNibName:@"CategoryViewController"  bundle:nil] autorelease];
-        [appDelegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationOptionTransitionNone];
+        
+        [appDelegate.transitionController transitionToViewController:appDelegate.categoryViewController withOptions:UIViewAnimationOptionTransitionNone];
     } else {
-        CoverFlowViewController *controller = [[[CoverFlowViewController alloc] initWithNibName:@"CoverFlowViewController" bundle:nil] autorelease];
-        [appDelegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationOptionTransitionNone];
+        
+        [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionNone];
     }
 }
+
 
 #pragma mark action sheet methods
 

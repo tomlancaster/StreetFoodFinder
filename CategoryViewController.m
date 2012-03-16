@@ -142,7 +142,7 @@
     
     [myTableView setBackgroundView:nil];
     [myTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    
     self.myNavItem.title = NSLocalizedString(@"Dishes", @"category list");
     self.myNavBar.tintColor = [UIColor greenColor];
     self.myNavItem.rightBarButtonItem = self.nearbyButton;
@@ -151,6 +151,10 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     //[[self navigationController] setNavigationBarHidden:NO animated:NO];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve] ;
+    }
     [self.myNavBar setHidden:NO];
 }
 
@@ -164,15 +168,11 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-   
-
-    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
          [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve] ;
     }
-    if (toInterfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
-         [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionCrossDissolve];
-    }
 }
+
 
 
 #pragma mark -
@@ -204,7 +204,8 @@
 -(void) openDescriptionOfCategory:(SpotCategory *) cat {
     CategoryDescriptionViewController *controller = [[[CategoryDescriptionViewController alloc] initWithNibName:@"CategoryDescriptionViewController" bundle:nil] autorelease];
     controller.cat = cat;
-    [self presentModalViewController:controller animated:YES];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [delegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationCurveEaseIn];
 }
 
 -(void) openSpotListPageWithCat:(SpotCategory *) cat {

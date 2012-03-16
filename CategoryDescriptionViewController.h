@@ -10,12 +10,8 @@
 @class SpotCategory;
 
 @interface CategoryDescriptionViewController : UIViewController {
-    IBOutlet UIImageView *pCatImageView;
-    IBOutlet UITextView *pBodyTextView;
-    IBOutlet UIImageView *lCatImageView;
-    IBOutlet UITextView *lBodyTextView;
-    IBOutlet UIView *pView;
-    IBOutlet UIView *lView;
+    IBOutlet UIImageView *catImageView;
+    IBOutlet UITextView *bodyTextView;
     SpotCategory *cat;
     IBOutlet UINavigationBar *myNavBar;
     IBOutlet UINavigationItem *myNavItem;
@@ -23,13 +19,10 @@
     
 }
 -(IBAction)backButtonPressed:(id)sender;
+-(void) openCategoryView;
 
-@property (nonatomic, retain) UIImageView *lCatImageView;
-@property (nonatomic, retain) UITextView *lBodyTextView;
-@property (nonatomic, retain) UIImageView *pCatImageView;
-@property (nonatomic, retain) UITextView *pBodyTextView;
-@property (nonatomic, retain) UIView *lView;
-@property (nonatomic, retain) UIView *pView;
+@property (nonatomic, retain) UIImageView *catImageView;
+@property (nonatomic, retain) UITextView *bodyTextView;
 @property (nonatomic, retain) SpotCategory * cat;
 @property (nonatomic, retain) UINavigationBar *myNavBar;
 @property (nonatomic, retain) UINavigationItem *myNavItem;

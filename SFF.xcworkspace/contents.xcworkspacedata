@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:modules/route-me/MapView/MapView.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../MWPhotoBrowser/MWPhotoBrowser/MWPhotoBrowser.xcodeproj">
    </FileRef>
    <FileRef

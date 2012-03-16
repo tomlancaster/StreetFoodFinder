@@ -38,7 +38,7 @@
 @synthesize transitionController;
 @synthesize coverFlowViewController;
 @synthesize categoryViewController;
-
+#define kDatabaseName @"hanoi_tiles.sqlite"
 
 - (void)dealloc
 {
@@ -70,7 +70,7 @@
     if (UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
         self.transitionController = [[TransitionController alloc] initWithViewController:self.categoryViewController];
     } else {
-        self.transitionController = [[TransitionController alloc] initWithViewController:self.categoryViewController];
+        self.transitionController = [[TransitionController alloc] initWithViewController:self.coverFlowViewController];
     }
 
     self.window.rootViewController = self.transitionController;
@@ -82,7 +82,7 @@
 	}
    
  
-    
+    [self createEditableCopyOfTileDatabaseIfNeeded];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -173,6 +173,37 @@
     DLog(@"Foo");
 }
 
+- (NSString *)tileDbPath {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+}
 
+// Creates a writable copy of the bundled default database in the application Documents directory.
+- (void)createEditableCopyOfTileDatabaseIfNeeded {
+    // First, test for existence.
+    BOOL success;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+	
+	NSString *writableDBPath = [self tileDbPath];
+    
+	success = [fileManager fileExistsAtPath:writableDBPath];
+	
+    if (success){
+		NSLog(@"writing to %@", writableDBPath);
+		return;
+	} 
+	else{
+		[fileManager removeItemAtPath:writableDBPath error:&error]; 
+	}
+	
+    // The writable database does not exist, so copy the default to the appropriate location.
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:kDatabaseName];
+    success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
+    if (!success) {
+        NSLog(@"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+    }
+}
 
 @end

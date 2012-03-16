@@ -9,15 +9,12 @@
 #import "CategoryDescriptionViewController.h"
 #import "SpotCategory.h"
 #import "SpotCategory+Extras.h"
+#import "AppDelegate.h"
 
 @implementation CategoryDescriptionViewController
 
-@synthesize lBodyTextView;
-@synthesize lCatImageView;
-@synthesize pBodyTextView;
-@synthesize pCatImageView;
-@synthesize pView;
-@synthesize lView;
+@synthesize bodyTextView;
+@synthesize catImageView;
 @synthesize cat;
 @synthesize myNavBar;
 @synthesize myNavItem;
@@ -28,21 +25,15 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    self.pBodyTextView = nil;
-    self.pCatImageView = nil;
-    self.lBodyTextView = nil;
-    self.lCatImageView = nil;
-    self.lView = nil;
-    self.pView = nil;
+    self.bodyTextView = nil;
+    self.catImageView = nil;
+
+
 }
 
 -(void) dealloc {
-    SafeRelease(pBodyTextView);
-    SafeRelease(pCatImageView);
-    SafeRelease(lBodyTextView);
-    SafeRelease(lCatImageView);
-    SafeRelease(lView);
-    SafeRelease(pView);
+    SafeRelease(bodyTextView);
+    SafeRelease(catImageView);
     SafeRelease(cat);
     SafeRelease(myNavBar);
     SafeRelease(myNavItem);
@@ -73,28 +64,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[self navigationController] setNavigationBarHidden:NO animated:NO];
-    self.myNavItem.title = [self.cat getLocalizedName];
-    
+    //[[self navigationController] setNavigationBarHidden:NO animated:NO];
+
     self.myNavItem.leftBarButtonItem = self.backButton;
-    self.lCatImageView.image = self.cat.spotcategory_photo;
-    self.lBodyTextView.text = [self.cat getLocalizedDescription];
-        
-    self.pCatImageView.image = self.cat.spotcategory_photo;
-    self.pBodyTextView.text = [self.cat getLocalizedDescription];
+    self.myNavItem.title = [self.cat getLocalizedName];
+    self.myNavBar.tintColor = TNH_RED;
+    
+    self.catImageView.image = self.cat.spotcategory_photo;
+    self.bodyTextView.text = [self.cat getLocalizedDescription];
+
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     
     // which view to show?
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ) {
-        [self.view addSubview:self.lView];
-        [self.pView removeFromSuperview];
+        [self.catImageView setFrame:CGRectMake(13, 55, 225, 225)];
+        [self.bodyTextView setFrame:CGRectMake(246, 55, 228, 225)];
     } else {
-        [self.view addSubview:self.pView];
-        [self.lView removeFromSuperview];
+        [self.catImageView setFrame:CGRectMake(48, 56, 225, 225)];
+        [self.bodyTextView setFrame:CGRectMake(10, 289, 300, 165)];
     }
-    
+    [self.myNavBar setFrame:CGRectMake(0.0 , 0.0, self.view.frame.size.width, 44.0)];
+
 
 }
 
@@ -106,16 +98,27 @@
                                         
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     if (UIDeviceOrientationIsLandscape(toInterfaceOrientation)) {
-        [self.lView setHidden:NO];
-        [self.pView setHidden:YES];
+        [self.catImageView setFrame:CGRectMake(13, 55, 225, 225)];
+        [self.bodyTextView setFrame:CGRectMake(246, 55, 228, 225)];
     } else {
-        [self.lView setHidden:YES];
-        [self.pView setHidden:NO];
+        [self.catImageView setFrame:CGRectMake(48, 56, 225, 225)];
+        [self.bodyTextView setFrame:CGRectMake(10, 289, 300, 165)];
     }
+    [self.myNavBar setFrame:CGRectMake(0.0 , 0.0, self.view.frame.size.width, 44.0)];
+}
+-(IBAction)backButtonPressed:(id)sender {
+    [self openCategoryView];
 }
 
--(IBAction)backButtonPressed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+-(void) openCategoryView {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (UIDeviceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+       
+        [appDelegate.transitionController transitionToViewController:appDelegate.categoryViewController withOptions:UIViewAnimationOptionTransitionNone];
+    } else {
+        
+        [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionNone];
+    }
 }
 
 
