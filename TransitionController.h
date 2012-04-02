@@ -10,9 +10,12 @@
 
 @property (nonatomic, strong) UIView * containerView;
 @property (nonatomic, strong) UIViewController * viewController;
+@property (nonatomic, strong) UIViewController * previousViewController;
 
 - (id)initWithViewController:(UIViewController *)viewController;
 - (void)transitionToViewController:(UIViewController *)viewController
                        withOptions:(UIViewAnimationOptions)options;
+
+-(void) transitionToPrevious;
 
 @end

@@ -38,7 +38,7 @@
 	[self sortReviewsBy:sortOrder];
 	[self.tableView setBackgroundView:nil];
     [self.tableView setBackgroundView:[[[UIView alloc] init] autorelease]];
-	
+	[FlurryAnalytics logPageView];
 }
 
 
@@ -182,7 +182,17 @@
 }
 	
 
-
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    CGRect frame = self.navigationController.navigationBar.frame;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        frame.size.height = 44;
+    } else {
+        frame.size.height = 32;
+    }
+    self.navigationController.navigationBar.frame = frame;
+    
+}
 
 
 

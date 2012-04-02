@@ -67,7 +67,7 @@
 {
     [super viewDidLoad];
     //[[self navigationController] setNavigationBarHidden:YES animated:NO];
-
+    
     // get categories
     self.categories = [[NSManagedObjectContext defaultManagedObjectContext] fetchAllOfEntity:[[NSManagedObjectContext defaultManagedObjectContext] entityDescriptionForName:@"SpotCategory"] predicate:nil sortKey:@"name_en_us" ascending:YES error:nil];
     
@@ -89,6 +89,7 @@
     [(AFOpenFlowView *)self.view setViewDelegate:self];
     self.selectedCat = [self.categories objectAtIndex:kSelectedCat];
     dishLabel.text = [self.selectedCat getLocalizedName];
+    [FlurryAnalytics logPageView];
 
     
 }

@@ -10,6 +10,9 @@
 #import "SpotCategory.h"
 #import "SpotCategory+Extras.h"
 #import "AppDelegate.h"
+#import "RMMapViewController.h"
+#import "NSManagedObjectContext+Helpers.h"
+#import "NSManagedObjectContext+SimpleFetches.h"
 
 @implementation CategoryDescriptionViewController
 
@@ -19,6 +22,7 @@
 @synthesize myNavBar;
 @synthesize myNavItem;
 @synthesize backButton;
+@synthesize mapButton;
 
 - (void)viewDidUnload
 {
@@ -38,6 +42,7 @@
     SafeRelease(myNavBar);
     SafeRelease(myNavItem);
     SafeRelease(backButton);
+    SafeRelease(mapButton);
     [super dealloc];
 }
 
@@ -69,9 +74,11 @@
     self.myNavItem.leftBarButtonItem = self.backButton;
     self.myNavItem.title = [self.cat getLocalizedName];
     self.myNavBar.tintColor = TNH_RED;
+    self.myNavItem.rightBarButtonItem = self.mapButton;
     
     self.catImageView.image = self.cat.spotcategory_photo;
     self.bodyTextView.text = [self.cat getLocalizedDescription];
+    [FlurryAnalytics logPageView];
 
 }
 
@@ -106,8 +113,16 @@
     }
     [self.myNavBar setFrame:CGRectMake(0.0 , 0.0, self.view.frame.size.width, 44.0)];
 }
+
+#pragma mark -
+#pragma mark event handling
+
 -(IBAction)backButtonPressed:(id)sender {
     [self openCategoryView];
+}
+
+-(IBAction)mapButtonPressed:(id)sender {
+    [self viewAllOnMap];
 }
 
 -(void) openCategoryView {
@@ -119,6 +134,18 @@
         
         [appDelegate.transitionController transitionToViewController:appDelegate.coverFlowViewController withOptions:UIViewAnimationOptionTransitionNone];
     }
+}
+
+-(void) viewAllOnMap {
+    RMMapViewController *controller = [[[RMMapViewController alloc] init] autorelease];
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.spots = [self.cat.spots allObjects];
+    UINavigationController *navC = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.transitionController transitionToViewController:navC withOptions:UIViewAnimationOptionTransitionNone];
+    //[self presentModalViewController:navC animated:YES];
 }
 
 

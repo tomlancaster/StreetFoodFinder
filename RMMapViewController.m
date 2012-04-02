@@ -9,13 +9,14 @@
 #import "RMMapViewController.h"
 #import "RMCloudMadeMapSource.h"
 #import "RMDBMapSource.h"
-#import "RMMarker.h"
+#import "XZMarker.h"
 #import "Spot.h"
 #import "RMMarkerManager.h"
-#import "RMMarker.h"
+#import "XZMarker.h"
 #import "Spot.h"
 #import "SSCLController.h"
 #import "MapAnnotationView.h"
+#import "SpotDetailViewController.h"
 
 @implementation RMMapViewController
 @synthesize mapView;
@@ -31,22 +32,36 @@
     [super dealloc];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    // Return YES for supported orientations
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
+
 
 - (void)loadView
 {
     [super loadView];
-    mapView = [[RMMapView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 460.0f)];
+    float width;
+    float height;
+    if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])) {
+        width = 320.0f;
+        height = 480.0f;
+    } else {
+        width = 480.0f;
+        height = 320.0f;
+    }
+    mapView = [[RMMapView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
 	[mapView setBackgroundColor:[UIColor whiteColor]];
 	mapView.delegate = self;	
+    self.navigationController.navigationBar.tintColor = TNH_RED;
     
+    UIBarButtonItem *dismissButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(donePressed:)] autorelease];
+    self.navigationItem.rightBarButtonItem = dismissButton;
 	id <RMTileSource> tileSource = [[[RMDBMapSource alloc] initWithPath:@"hanoi_tiles.sqlite"] autorelease];
 	
 	contents = [[RMMapContents alloc] initWithView:mapView tilesource:tileSource]; 
@@ -55,21 +70,40 @@
 	[contents setMaxZoom:17.0f];
 	[contents setMinZoom:12.0f];
 	
-	[contents setZoom:14.0f];
-	[contents setMapCenter:CLLocationCoordinate2DMake(21.06, 105.94)];
 	
-	self.view = mapView; 	
+	[contents setMapCenter:CLLocationCoordinate2DMake(21.032, 105.834)];
+	
+	[self.view addSubview:mapView]; 	
     if (self.spot != nil) {
+        [contents setZoom:14.0f];
         [contents setMapCenter:CLLocationCoordinate2DMake([self.spot.lat doubleValue], [self.spot.lng doubleValue])];
+    } else {
+        [contents setZoom:13.0f];
+        //[contents setMapCenter:[[SSCLController sharedSSCLController] searchCenter]];
     }
     [SSCLController sharedSSCLController].delegate = self;
 	
     [self addMarkers];
-   /*
-    [mapView setConstraintsSW:((CLLocationCoordinate2D){20.96,105.7}) 
-     NE:((CLLocationCoordinate2D){21.06,105.94})]; 
-    
- */
+    [FlurryAnalytics logPageView];
+
+}
+
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    float width;
+    float height;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        width = 320.0f;
+        height = 480.0f;
+    } else {
+        width = 480.0f;
+        height = 320.0f;
+    }
+    [mapView setFrame:CGRectMake(0.0f, 0.0f, width, height)];
+}
+
+-(IBAction)donePressed:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.transitionController transitionToPrevious];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -87,22 +121,25 @@
 	UIImage *redMarkerImage = [UIImage imageNamed:@"marker-red.png"];
 	//UIImage *blueMarkerImage = [UIImage imageNamed:@"marker-blue.png"];
 	
-    RMMarker *newMarker;
+    XZMarker *newMarker;
     if (self.spots.count > 0) {
         for (Spot *theSpot in self.spots) {
-            newMarker = [[RMMarker alloc] initWithUIImage:redMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
+            newMarker = [[XZMarker alloc] initWithUIImage:redMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
             [contents.markerManager addMarker:newMarker AtLatLong:CLLocationCoordinate2DMake([theSpot.lat doubleValue], [theSpot.lng doubleValue])];
-            [newMarker changeLabelUsingText:theSpot.name font:[UIFont fontWithName:@"Verdana" size:15.0f] foregroundColor:[UIColor blackColor] backgroundColor:[UIColor whiteColor]];
+            [newMarker changeLabelUsingText:theSpot.name font:[UIFont fontWithName:@"Verdana" size:14.0f] foregroundColor:[UIColor blackColor] backgroundColor:[UIColor whiteColor]];
+            newMarker.spot = theSpot;
+            [newMarker hideLabel];
             
             
         }
     } else if (self.spot != nil) {
-        newMarker = [[RMMarker alloc] initWithUIImage:redMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
+        newMarker = [[XZMarker alloc] initWithUIImage:redMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
         [contents.markerManager addMarker:newMarker AtLatLong:CLLocationCoordinate2DMake([self.spot.lat doubleValue], [self.spot.lng doubleValue])];
-         [newMarker changeLabelUsingText:self.spot.name font:[UIFont fontWithName:@"Verdana" size:15.0f] foregroundColor:[UIColor blackColor] backgroundColor:[UIColor whiteColor]];
+         [newMarker changeLabelUsingText:self.spot.name font:[UIFont fontWithName:@"Verdana" size:14.0f] foregroundColor:[UIColor blackColor] backgroundColor:[UIColor whiteColor]];
+        newMarker.spot = self.spot;
     }
    
-    [newMarker hideLabel];
+    
     [newMarker release];
     
     [self updateLocationPin];
@@ -121,7 +158,7 @@
     [contents.markerManager removeMarker:xMarker];
     // mark current location
     UIImage *xMarkerImage = [UIImage imageNamed:@"marker-X.png"];
-    xMarker = [[RMMarker alloc] initWithUIImage:xMarkerImage anchorPoint:CGPointMake(0.5, 0.5)];
+    xMarker = [[XZMarker alloc] initWithUIImage:xMarkerImage anchorPoint:CGPointMake(0.5, 0.5)];
     [self.mapView.contents.markerManager addMarker:xMarker AtLatLong:locationCenter];
 }
 
@@ -129,13 +166,19 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [SSCLController sharedSSCLController].delegate = nil;
+
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+-(void) viewWillDisappear:(BOOL) animated {
+    [super viewWillDisappear:animated];
+    [SSCLController sharedSSCLController].delegate = nil;
 }
+
+
+
+
 
 - (void) zoomToAnnotationsBounds:(NSArray *)annotations {
     /*
@@ -218,12 +261,16 @@
     
 }
 
-- (void) tapOnMarker: (RMMarker*) marker onMap: (RMMapView*) map {
+- (void) tapOnMarker: (XZMarker*) marker onMap: (RMMapView*) map {
     [marker toggleLabel];
 }
 
-- (void) tapOnLabelForMarker: (RMMarker*) marker onMap: (RMMapView*) map {
-    
+- (void) tapOnLabelForMarker: (XZMarker*) marker onMap: (RMMapView*) map {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    SpotDetailViewController *controller = [[[SpotDetailViewController alloc] initWithNibName:@"SpotDetails" bundle:nil] autorelease];
+    controller.selectedSpot = marker.spot;
+    [self.navigationController pushViewController:controller animated:YES];
+    //[appDelegate.transitionController transitionToViewController:controller withOptions:UIViewAnimationOptionTransitionNone];
 }
 
 #pragma mark -

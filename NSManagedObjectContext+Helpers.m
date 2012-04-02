@@ -88,7 +88,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     // If the expected store doesn’t exist, copy the default store.
     if (![fileManager fileExistsAtPath:storePath]) {
-        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"StreetFood1" ofType:@"sqlite"];
+        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"StreetFood" ofType:@"sqlite"];
         if ([fileManager fileExistsAtPath:defaultStorePath]) {
             // nothing to do - we have a populated database already
             [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];

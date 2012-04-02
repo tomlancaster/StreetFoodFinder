@@ -20,6 +20,7 @@
 #import <CoreData/CoreData.h>
 #import "TransitionController.h"
 #import "AppDelegate.h"
+#import "FlurryAnalytics.h"
 #endif
 
 

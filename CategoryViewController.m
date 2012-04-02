@@ -147,6 +147,7 @@
     self.myNavBar.tintColor = [UIColor greenColor];
     self.myNavItem.rightBarButtonItem = self.nearbyButton;
     [self findResults];
+    [FlurryAnalytics logPageView];
 }
 
 -(void) viewWillAppear:(BOOL)animated {

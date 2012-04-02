@@ -77,23 +77,8 @@
                 SpotPhoto *photo = [[NSManagedObjectContext defaultManagedObjectContext] insertNewObjectForEntityWithName:@"SpotPhoto"];
                 photo.caption = [photoDict objectForKey:@"caption"];
                 photo.spot = spot;
-                NSURL *url = [NSURL URLWithString:[photoDict objectForKey:@"small"]];
-                DLog(@"url: %@", url);
-                __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-                [request setCompletionBlock:^{
-                    // Use when fetching binary data
-                    NSData *responseData = [request responseData];
-                    UIImage *image = [UIImage imageWithData:(NSData *)responseData];
-                    
-                    photo.spot_id = spot.spot_id;
-                    photo.photo_small = image;
-                }];
-                [request setFailedBlock:^{
-                    NSError *error = [request error];
-                    DLog(@"error from spot image fetch: %@", error);
-                }];
-                [request startAsynchronous];
-                url = [NSURL URLWithString:[photoDict objectForKey:@"large"]];
+                
+                NSURL *url = [NSURL URLWithString:[photoDict objectForKey:@"large"]];
                 DLog(@"url: %@", url);
                 __block ASIHTTPRequest *largeRequest = [ASIHTTPRequest requestWithURL:url];
                 [largeRequest setCompletionBlock:^{
@@ -104,8 +89,8 @@
                     photo.spot_id = spot.spot_id;
                     photo.photo_large = image;
                 }];
-                [request setFailedBlock:^{
-                    NSError *error = [request error];
+                [largeRequest setFailedBlock:^{
+                    NSError *error = [largeRequest error];
                     DLog(@"error from spot image fetch: %@", error);
                 }];
                 [largeRequest startAsynchronous];

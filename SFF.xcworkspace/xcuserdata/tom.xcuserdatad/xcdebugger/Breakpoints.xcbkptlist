@@ -65,11 +65,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "353393765.078679"
+         timestampString = "353816579.093653"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "169"
-         endingLineNumber = "169"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "+syncFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -107,11 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "353393765.078679"
+         timestampString = "353816579.093653"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "119"
-         endingLineNumber = "119"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
          landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "353393765.078679"
+         timestampString = "353816579.093653"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "123"
-         endingLineNumber = "123"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
          landmarkName = "+syncSpotsFromResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -148,12 +148,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SpotCategory+Extras.m"
-         timestampString = "353393765.078679"
+         timestampString = "353816579.093653"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
          landmarkName = "+syncSpotsFromResponse:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SpotListViewController.m"
+         timestampString = "353828666.254536"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "171"
+         endingLineNumber = "171"
+         landmarkName = "-willRotateToInterfaceOrientation:duration:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RMMapViewController.m"
+         timestampString = "354778947.879368"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "260"
+         endingLineNumber = "260"
+         landmarkName = "-afterMapZoom:byFactor:near:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

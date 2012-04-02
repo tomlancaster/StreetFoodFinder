@@ -21,6 +21,7 @@
 #import "SSCLController.h"
 #import "TransitionController.h"
 #import "CoverFlowViewController.h"
+#import "FlurryAnalytics.h"
 
 @implementation AppDelegate
 
@@ -56,6 +57,10 @@
     [super dealloc];
 }
 
+void uncaughtExceptionHandler(NSException *exception) {
+    [FlurryAnalytics logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
@@ -72,7 +77,8 @@
     } else {
         self.transitionController = [[TransitionController alloc] initWithViewController:self.coverFlowViewController];
     }
-
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    [FlurryAnalytics startSession:@"CEDDC79BYDV6QNMAXPUU"];
     self.window.rootViewController = self.transitionController;
 
     if (![self queue]) {

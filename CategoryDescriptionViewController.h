@@ -16,10 +16,14 @@
     IBOutlet UINavigationBar *myNavBar;
     IBOutlet UINavigationItem *myNavItem;
     IBOutlet UIBarButtonItem *backButton;
+    IBOutlet UIBarButtonItem *mapButton;
     
 }
 -(IBAction)backButtonPressed:(id)sender;
 -(void) openCategoryView;
+
+-(IBAction)mapButtonPressed:(id)sender;
+-(void) viewAllOnMap;
 
 @property (nonatomic, retain) UIImageView *catImageView;
 @property (nonatomic, retain) UITextView *bodyTextView;
@@ -27,5 +31,6 @@
 @property (nonatomic, retain) UINavigationBar *myNavBar;
 @property (nonatomic, retain) UINavigationItem *myNavItem;
 @property (nonatomic, retain) UIBarButtonItem *backButton;
+@property (nonatomic, retain) UIBarButtonItem *mapButton;
 
 @end

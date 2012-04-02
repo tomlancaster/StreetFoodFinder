@@ -40,11 +40,19 @@
 				<int key="IBUIStyle">1</int>
 				<int key="IBUISystemItemIdentifier">0</int>
 			</object>
+			<object class="IBUIBarButtonItem" id="412330038">
+				<object class="NSCustomResource" key="IBUIImage">
+					<string key="NSClassName">NSImage</string>
+					<string key="NSResourceName">74-location.png</string>
+				</object>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIStyle">1</int>
+			</object>
 			<object class="IBUIView" id="881692232">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="611587652">
+					<object class="IBUIImageView" id="595177617">
 						<reference key="NSNextResponder" ref="881692232"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{43, 118}, {223, 224}}</string>
@@ -73,10 +81,10 @@
 					<object class="IBUINavigationBar" id="579384880">
 						<reference key="NSNextResponder" ref="881692232"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{-80, 208}, {480, 44}}</string>
+						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="881692232"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="611587652"/>
+						<reference key="NSNextKeyView" ref="595177617"/>
 						<string key="NSReuseIdentifierKey">_NS:260</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<array key="IBUIItems">
@@ -189,12 +197,28 @@
 					<int key="connectionID">55</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">mapButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="412330038"/>
+					</object>
+					<int key="connectionID">59</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">backButtonPressed:</string>
 						<reference key="source" ref="662273556"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">mapButtonPressed:</string>
+						<reference key="source" ref="412330038"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">58</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -226,9 +250,9 @@
 						<reference key="object" ref="881692232"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="1009900034"/>
-							<reference ref="579384880"/>
 							<reference ref="970319482"/>
-							<reference ref="611587652"/>
+							<reference ref="595177617"/>
+							<reference ref="579384880"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -257,8 +281,13 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">56</int>
-						<reference key="object" ref="611587652"/>
+						<reference key="object" ref="595177617"/>
 						<reference key="parent" ref="881692232"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">57</int>
+						<reference key="object" ref="412330038"/>
+						<reference key="parent" ref="0"/>
 					</object>
 				</array>
 			</object>
@@ -273,34 +302,39 @@
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">56</int>
+			<int key="maxID">59</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">CategoryDescriptionViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">backButtonPressed:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">backButtonPressed:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="backButtonPressed:">id</string>
+						<string key="mapButtonPressed:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="backButtonPressed:">
 							<string key="name">backButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="mapButtonPressed:">
+							<string key="name">mapButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="backButton">UIBarButtonItem</string>
 						<string key="bodyTextView">UITextView</string>
 						<string key="catImageView">UIImageView</string>
+						<string key="mapButton">UIBarButtonItem</string>
 						<string key="myNavBar">UINavigationBar</string>
 						<string key="myNavItem">UINavigationItem</string>
 					</dictionary>
@@ -316,6 +350,10 @@
 						<object class="IBToOneOutletInfo" key="catImageView">
 							<string key="name">catImageView</string>
 							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="mapButton">
+							<string key="name">mapButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myNavBar">
 							<string key="name">myNavBar</string>
@@ -341,10 +379,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">bkg.png</string>
-			<string key="NS.object.0">{233, 224}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="74-location.png">{20, 20}</string>
+			<string key="bkg.png">{233, 224}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>
 </archive>

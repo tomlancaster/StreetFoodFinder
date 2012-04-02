@@ -145,6 +145,7 @@
         [self sortSpotsBy:self.sortBy];
         [self.myTableView reloadData];
     }
+    [FlurryAnalytics logPageView];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -161,6 +162,20 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+
+
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    CGRect frame = self.navigationController.navigationBar.frame;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        frame.size.height = 44;
+    } else {
+        frame.size.height = 32;
+    }
+    self.navigationController.navigationBar.frame = frame;
+
 }
 
 #pragma mark -
