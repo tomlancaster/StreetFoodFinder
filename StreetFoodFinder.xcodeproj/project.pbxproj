@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E223A5A3152ABD8F00211CB0 /* StreetFood.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E223A5A2152ABD8F00211CB0 /* StreetFood.sqlite */; };
 		E231A534151053F600C884B0 /* SpotPhoto+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A533151053F600C884B0 /* SpotPhoto+Extras.m */; };
 		E231A538151055FE00C884B0 /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A537151055FE00C884B0 /* Spot.m */; };
 		E231A53B151055FF00C884B0 /* SpotPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E231A53A151055FF00C884B0 /* SpotPhoto.m */; };
@@ -73,7 +74,6 @@
 		E28659BA150732480058B538 /* CategoryDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28659B8150732480058B538 /* CategoryDescriptionViewController.m */; };
 		E28659BB150732480058B538 /* CategoryDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28659B9150732480058B538 /* CategoryDescriptionViewController.xib */; };
 		E28659BF15074E110058B538 /* TransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28659BE15074E110058B538 /* TransitionController.m */; };
-		E28659C21509D7480058B538 /* StreetFood.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E28659C11509D7480058B538 /* StreetFood.sqlite */; };
 		E299DBB114EF9F820023A890 /* 54.png in Resources */ = {isa = PBXBuildFile; fileRef = E299DBAD14EF9F820023A890 /* 54.png */; };
 		E299DBB214EF9F820023A890 /* 56.png in Resources */ = {isa = PBXBuildFile; fileRef = E299DBAE14EF9F820023A890 /* 56.png */; };
 		E299DBB314EF9F820023A890 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = E299DBAF14EF9F820023A890 /* 58.png */; };
@@ -196,6 +196,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E223A5A2152ABD8F00211CB0 /* StreetFood.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StreetFood.sqlite; sourceTree = "<group>"; };
 		E231A532151053F600C884B0 /* SpotPhoto+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpotPhoto+Extras.h"; sourceTree = "<group>"; };
 		E231A533151053F600C884B0 /* SpotPhoto+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpotPhoto+Extras.m"; sourceTree = "<group>"; };
 		E231A536151055FE00C884B0 /* Spot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
@@ -315,7 +316,6 @@
 		E28659B9150732480058B538 /* CategoryDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryDescriptionViewController.xib; sourceTree = "<group>"; };
 		E28659BD15074E110058B538 /* TransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionController.h; sourceTree = "<group>"; };
 		E28659BE15074E110058B538 /* TransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionController.m; sourceTree = "<group>"; };
-		E28659C11509D7480058B538 /* StreetFood.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = StreetFood.sqlite; sourceTree = "<group>"; };
 		E299DBAD14EF9F820023A890 /* 54.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 54.png; sourceTree = "<group>"; };
 		E299DBAE14EF9F820023A890 /* 56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 56.png; sourceTree = "<group>"; };
 		E299DBAF14EF9F820023A890 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
@@ -683,6 +683,7 @@
 		E28659C01509D6840058B538 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E223A5A2152ABD8F00211CB0 /* StreetFood.sqlite */,
 				E2BC341B1513257000E736E5 /* bowl.png */,
 				E2BC341C1513257000E736E5 /* bowl@2x.png */,
 				E2BC3417151321ED00E736E5 /* 74-location.png */,
@@ -700,7 +701,6 @@
 				E231A5901510622300C884B0 /* street-food_App1.png */,
 				E231A5911510622300C884B0 /* street-food_Large_BlackBG.png */,
 				E231A5921510622300C884B0 /* street-food_Large.png */,
-				E28659C11509D7480058B538 /* StreetFood.sqlite */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -859,9 +859,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E235B8A714DFC4FA000AC94E /* StreetFoodFinder */ = {
+		E235B8A714DFC4FA000AC94E /* StreetFoodFinderHN */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E235B8C614DFC4FA000AC94E /* Build configuration list for PBXNativeTarget "StreetFoodFinder" */;
+			buildConfigurationList = E235B8C614DFC4FA000AC94E /* Build configuration list for PBXNativeTarget "StreetFoodFinderHN" */;
 			buildPhases = (
 				E235B8A414DFC4FA000AC94E /* Sources */,
 				E235B8A514DFC4FA000AC94E /* Frameworks */,
@@ -872,7 +872,7 @@
 			dependencies = (
 				E231A7841511A7E300C884B0 /* PBXTargetDependency */,
 			);
-			name = StreetFoodFinder;
+			name = StreetFoodFinderHN;
 			productName = StreetFoodFinder;
 			productReference = E235B8A814DFC4FA000AC94E /* StreetFoodFinder.app */;
 			productType = "com.apple.product-type.application";
@@ -904,7 +904,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E235B8A714DFC4FA000AC94E /* StreetFoodFinder */,
+				E235B8A714DFC4FA000AC94E /* StreetFoodFinderHN */,
 			);
 		};
 /* End PBXProject section */
@@ -972,7 +972,6 @@
 				E259728114F224BB006612FA /* bkg.png in Resources */,
 				E2C8E59A14F2325900A58CB4 /* reviews.xib in Resources */,
 				E28659BB150732480058B538 /* CategoryDescriptionViewController.xib in Resources */,
-				E28659C21509D7480058B538 /* StreetFood.sqlite in Resources */,
 				E231A5931510622300C884B0 /* street-food_app1_BlackBG.png in Resources */,
 				E231A5941510622300C884B0 /* street-food_App1.png in Resources */,
 				E231A5951510622300C884B0 /* street-food_Large_BlackBG.png in Resources */,
@@ -993,6 +992,7 @@
 				E2BC342215132E3F00E736E5 /* Entitlements.plist in Resources */,
 				E2BF9C211524516E00581E60 /* splash3_iPhone.png in Resources */,
 				E2BF9C281524519900581E60 /* Default.png in Resources */,
+				E223A5A3152ABD8F00211CB0 /* StreetFood.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1257,7 +1257,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E235B8C614DFC4FA000AC94E /* Build configuration list for PBXNativeTarget "StreetFoodFinder" */ = {
+		E235B8C614DFC4FA000AC94E /* Build configuration list for PBXNativeTarget "StreetFoodFinderHN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E235B8C714DFC4FA000AC94E /* Debug */,

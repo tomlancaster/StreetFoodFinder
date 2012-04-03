@@ -174,11 +174,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RMMapViewController.m"
-         timestampString = "354778947.879368"
+         timestampString = "355025095.619836"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "260"
-         endingLineNumber = "260"
+         startingLineNumber = "263"
+         endingLineNumber = "263"
          landmarkName = "-afterMapZoom:byFactor:near:"
          landmarkType = "5">
       </FileBreakpoint>

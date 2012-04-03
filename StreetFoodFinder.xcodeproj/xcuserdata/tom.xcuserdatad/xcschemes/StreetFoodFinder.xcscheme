@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E235B8A714DFC4FA000AC94E"
                BuildableName = "StreetFoodFinder.app"
-               BlueprintName = "StreetFoodFinder"
+               BlueprintName = "StreetFoodFinderHN"
                ReferencedContainer = "container:StreetFoodFinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235B8A714DFC4FA000AC94E"
             BuildableName = "StreetFoodFinder.app"
-            BlueprintName = "StreetFoodFinder"
+            BlueprintName = "StreetFoodFinderHN"
             ReferencedContainer = "container:StreetFoodFinder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -53,7 +53,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235B8A714DFC4FA000AC94E"
             BuildableName = "StreetFoodFinder.app"
-            BlueprintName = "StreetFoodFinder"
+            BlueprintName = "StreetFoodFinderHN"
             ReferencedContainer = "container:StreetFoodFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -97,7 +97,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235B8A714DFC4FA000AC94E"
             BuildableName = "StreetFoodFinder.app"
-            BlueprintName = "StreetFoodFinder"
+            BlueprintName = "StreetFoodFinderHN"
             ReferencedContainer = "container:StreetFoodFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

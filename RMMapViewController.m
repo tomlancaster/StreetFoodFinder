@@ -94,11 +94,14 @@
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
         width = 320.0f;
         height = 480.0f;
+        [self.navigationController.navigationBar setFrame:CGRectMake(0.0 , 0.0, self.view.frame.size.width, 44.0)];
     } else {
         width = 480.0f;
         height = 320.0f;
+        [self.navigationController.navigationBar setFrame:CGRectMake(0.0 , 0.0, self.view.frame.size.width, 32.0)];
     }
     [mapView setFrame:CGRectMake(0.0f, 0.0f, width, height)];
+    
 }
 
 -(IBAction)donePressed:(id)sender {
